@@ -1,12 +1,21 @@
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('Projekt: Kindergarten initialized.');
+    console.log('Wunderwelt initialized.');
 
+    initNavigation();
+    initScrollEffects();
+    initAnimations();
     initCalculator();
     initResourceMap();
     initExpandableCards();
-    initSmoothScroll();
-    initParallaxEffect();
     initFAQ();
+    initContactForm();
+    initNewsletterForms();
+    initBlogFilters();
+    initReadingTime();
+    initShareButtons();
+    initSmoothScroll();
+    initLazyLoading();
+    initLoadMore();
 });
 
 function initCalculator() {
@@ -323,28 +332,22 @@ function initExpandableCards() {
 // Smooth scroll for anchor links
 function initSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
+        anchor.addEventListener('click', (e) => {
+            const targetId = anchor.getAttribute('href');
+            if (targetId === '#') return;
+
+            const target = document.querySelector(targetId);
             if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
+                e.preventDefault();
+                const navHeight = document.querySelector('.main-nav')?.offsetHeight || 0;
+                const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navHeight - 20;
+
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
                 });
             }
         });
-    });
-}
-
-// Subtle parallax effect on hero image
-function initParallaxEffect() {
-    const heroImage = document.querySelector('.hero-image');
-    if (!heroImage) return;
-
-    window.addEventListener('scroll', () => {
-        const scrolled = window.pageYOffset;
-        const parallax = scrolled * 0.3;
-        heroImage.style.transform = `translateY(${parallax}px) scale(1.1)`;
     });
 }
 
@@ -377,4 +380,515 @@ function initFAQ() {
             item.classList.toggle('active');
         });
     });
+}
+
+// Navigation
+function initNavigation() {
+    const nav = document.querySelector('.main-nav');
+    const toggle = document.querySelector('.nav-toggle');
+    const links = document.querySelector('.nav-links');
+
+    if (!nav) return;
+
+    if (toggle && links) {
+        toggle.addEventListener('click', () => {
+            toggle.classList.toggle('active');
+            links.classList.toggle('active');
+            document.body.classList.toggle('nav-open');
+
+            const isOpen = links.classList.contains('active');
+            toggle.setAttribute('aria-expanded', isOpen);
+        });
+
+        links.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                toggle.classList.remove('active');
+                links.classList.remove('active');
+                document.body.classList.remove('nav-open');
+                toggle.setAttribute('aria-expanded', false);
+            });
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && links.classList.contains('active')) {
+                toggle.classList.remove('active');
+                links.classList.remove('active');
+                document.body.classList.remove('nav-open');
+                toggle.setAttribute('aria-expanded', false);
+            }
+        });
+    }
+
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+        if (currentScroll > 100) {
+            nav.classList.add('scrolled');
+        } else {
+            nav.classList.remove('scrolled');
+        }
+    }, { passive: true });
+
+    highlightActiveLink();
+}
+
+function highlightActiveLink() {
+    const currentPath = window.location.pathname;
+    const filename = currentPath.split('/').pop() || 'index.html';
+
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        const href = link.getAttribute('href');
+        const linkFile = href.split('/').pop();
+
+        if (linkFile === filename || (filename === '' && linkFile === 'index.html')) {
+            link.classList.add('active');
+        }
+    });
+}
+
+// Scroll effects
+function initScrollEffects() {
+    const heroImage = document.querySelector('.hero-image');
+    if (heroImage) {
+        window.addEventListener('scroll', () => {
+            const scroll = window.pageYOffset;
+            heroImage.style.transform = `translateY(${scroll * 0.3}px) scale(1.05)`;
+        }, { passive: true });
+    }
+}
+
+function initAnimations() {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    });
+
+    document.querySelectorAll('.fade-in').forEach(el => {
+        observer.observe(el);
+    });
+}
+
+// Contact form
+function initContactForm() {
+    const form = document.getElementById('contact-form');
+    if (!form) return;
+
+    form.addEventListener('submit', handleContactSubmit);
+
+    const inputs = form.querySelectorAll('input, textarea, select');
+    inputs.forEach(input => {
+        input.addEventListener('blur', () => validateField(input));
+        input.addEventListener('input', () => clearFieldError(input));
+    });
+}
+
+async function handleContactSubmit(e) {
+    e.preventDefault();
+
+    const form = e.target;
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData);
+
+    const errors = validateContactForm(data);
+    if (errors.length > 0) {
+        showFormErrors(form, errors);
+        return;
+    }
+
+    const submitBtn = form.querySelector('.submit-btn');
+    const originalText = submitBtn.textContent;
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+    submitBtn.classList.add('loading');
+
+    try {
+        const action = form.getAttribute('action');
+        if (action && action !== '#') {
+            const response = await fetch(action, {
+                method: 'POST',
+                body: formData,
+                headers: { 'Accept': 'application/json' }
+            });
+
+            if (!response.ok) throw new Error('Submission failed');
+        } else {
+            await simulateSubmit();
+        }
+
+        showFormSuccess(form, 'Message sent successfully. We will be in touch soon.');
+        form.reset();
+    } catch (err) {
+        console.error('Form submission error:', err);
+        showFormErrors(form, ['Failed to send message. Please try again or email us directly.']);
+    } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalText;
+        submitBtn.classList.remove('loading');
+    }
+}
+
+function validateContactForm(data) {
+    const errors = [];
+
+    if (!data.name || data.name.trim().length < 2) {
+        errors.push('Please enter your name (at least 2 characters).');
+    }
+
+    if (!isValidEmail(data.email)) {
+        errors.push('Please enter a valid email address.');
+    }
+
+    if (!data.subject) {
+        errors.push('Please select a subject.');
+    }
+
+    if (!data.message || data.message.trim().length < 10) {
+        errors.push('Please enter a message (at least 10 characters).');
+    }
+
+    if (data.website && data.website.length > 0) {
+        errors.push('Spam detected.');
+    }
+
+    return errors;
+}
+
+function validateField(input) {
+    const name = input.name;
+    const value = input.value;
+    let error = null;
+
+    switch (name) {
+        case 'name':
+            if (!value || value.trim().length < 2) {
+                error = 'Name is required.';
+            }
+            break;
+        case 'email':
+            if (!isValidEmail(value)) {
+                error = 'Valid email is required.';
+            }
+            break;
+        case 'message':
+            if (!value || value.trim().length < 10) {
+                error = 'Message must be at least 10 characters.';
+            }
+            break;
+    }
+
+    if (error) {
+        input.classList.add('error');
+        showFieldError(input, error);
+    } else {
+        input.classList.remove('error');
+        clearFieldError(input);
+    }
+}
+
+function showFieldError(input, message) {
+    clearFieldError(input);
+    const error = document.createElement('span');
+    error.className = 'field-error';
+    error.textContent = message;
+    input.parentNode.appendChild(error);
+}
+
+function clearFieldError(input) {
+    const existing = input.parentNode.querySelector('.field-error');
+    if (existing) existing.remove();
+    input.classList.remove('error');
+}
+
+function showFormErrors(form, errors) {
+    removeFormMessages(form);
+
+    const container = document.createElement('div');
+    container.className = 'form-errors';
+    container.setAttribute('role', 'alert');
+    container.innerHTML = errors.map(e => `<p>${escapeHtml(e)}</p>`).join('');
+
+    form.prepend(container);
+    container.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+function showFormSuccess(form, message) {
+    removeFormMessages(form);
+
+    const container = document.createElement('div');
+    container.className = 'form-success';
+    container.setAttribute('role', 'status');
+    container.textContent = message;
+
+    form.prepend(container);
+}
+
+function removeFormMessages(form) {
+    form.querySelectorAll('.form-errors, .form-success').forEach(el => el.remove());
+}
+
+// Newsletter
+function initNewsletterForms() {
+    const forms = document.querySelectorAll('.newsletter-form, .newsletter-form-compact');
+    forms.forEach(form => {
+        form.addEventListener('submit', handleNewsletterSubmit);
+    });
+}
+
+async function handleNewsletterSubmit(e) {
+    e.preventDefault();
+
+    const form = e.target;
+    const emailInput = form.querySelector('input[type="email"]');
+    const email = emailInput.value.trim();
+    const button = form.querySelector('button');
+
+    if (!isValidEmail(email)) {
+        showNewsletterMessage(form, 'Please enter a valid email address.', 'error');
+        emailInput.focus();
+        return;
+    }
+
+    const originalText = button.textContent;
+    button.disabled = true;
+    button.textContent = 'Subscribing...';
+
+    try {
+        const action = form.getAttribute('action');
+        if (action && action !== '#') {
+            const formData = new FormData(form);
+            const response = await fetch(action, {
+                method: 'POST',
+                body: formData,
+                headers: { 'Accept': 'application/json' }
+            });
+
+            if (!response.ok) throw new Error('Subscription failed');
+        } else {
+            await simulateSubmit();
+        }
+
+        showNewsletterMessage(form, 'Welcome to the movement. Check your inbox.', 'success');
+        emailInput.value = '';
+    } catch (err) {
+        console.error('Newsletter error:', err);
+        showNewsletterMessage(form, 'Subscription failed. Please try again.', 'error');
+    } finally {
+        button.disabled = false;
+        button.textContent = originalText;
+    }
+}
+
+function showNewsletterMessage(form, message, type) {
+    const parent = form.parentElement;
+    const existing = parent.querySelector('.newsletter-message');
+    if (existing) existing.remove();
+
+    const msg = document.createElement('p');
+    msg.className = `newsletter-message ${type}`;
+    msg.textContent = message;
+    msg.setAttribute('role', type === 'error' ? 'alert' : 'status');
+
+    form.after(msg);
+
+    if (type === 'success') {
+        setTimeout(() => msg.remove(), 5000);
+    }
+}
+
+// Blog features
+function initBlogFilters() {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const posts = document.querySelectorAll('.blog-card[data-tags]');
+
+    if (!filterBtns.length || !posts.length) return;
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const filter = btn.dataset.filter;
+
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            posts.forEach(post => {
+                const tags = post.dataset.tags?.split(',') || [];
+
+                if (filter === 'all' || tags.includes(filter)) {
+                    post.style.display = '';
+                    post.classList.add('fade-in');
+                    requestAnimationFrame(() => post.classList.add('visible'));
+                } else {
+                    post.style.display = 'none';
+                    post.classList.remove('visible');
+                }
+            });
+
+            const url = new URL(window.location);
+            if (filter === 'all') {
+                url.searchParams.delete('filter');
+            } else {
+                url.searchParams.set('filter', filter);
+            }
+            history.replaceState(null, '', url);
+        });
+    });
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const initialFilter = urlParams.get('filter');
+    if (initialFilter) {
+        const btn = document.querySelector(`.filter-btn[data-filter="${initialFilter}"]`);
+        if (btn) btn.click();
+    }
+}
+
+function initReadingTime() {
+    const content = document.querySelector('.post-content');
+    const display = document.querySelector('.post-reading-time');
+
+    if (!content || !display) return;
+
+    const text = content.textContent || content.innerText;
+    const words = text.trim().split(/\s+/).length;
+    const minutes = Math.ceil(words / 200);
+
+    display.textContent = `${minutes} min read`;
+}
+
+function initShareButtons() {
+    const shareLinks = document.querySelectorAll('.share-link');
+    if (!shareLinks.length) return;
+
+    const pageUrl = encodeURIComponent(window.location.href);
+    const pageTitle = encodeURIComponent(document.title);
+
+    shareLinks.forEach(link => {
+        const platform = link.dataset.platform;
+
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            let shareUrl;
+
+            switch (platform) {
+                case 'twitter':
+                    shareUrl = `https://twitter.com/intent/tweet?url=${pageUrl}&text=${pageTitle}`;
+                    break;
+                case 'mastodon': {
+                    const instance = prompt('Enter your Mastodon instance (e.g., mastodon.social):');
+                    if (instance) {
+                        shareUrl = `https://${instance}/share?text=${pageTitle}%20${pageUrl}`;
+                    }
+                    break;
+                }
+                case 'linkedin':
+                    shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${pageUrl}`;
+                    break;
+                case 'copy':
+                    copyToClipboard(window.location.href);
+                    showCopyFeedback(link);
+                    return;
+                default:
+                    shareUrl = '';
+            }
+
+            if (shareUrl) {
+                window.open(shareUrl, '_blank', 'width=600,height=400');
+            }
+        });
+    });
+}
+
+function copyToClipboard(text) {
+    if (navigator.clipboard) {
+        navigator.clipboard.writeText(text);
+    } else {
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.style.position = 'fixed';
+        textarea.style.opacity = '0';
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+    }
+}
+
+function showCopyFeedback(button) {
+    const originalText = button.textContent;
+    button.textContent = 'Copied!';
+    button.classList.add('copied');
+
+    setTimeout(() => {
+        button.textContent = originalText;
+        button.classList.remove('copied');
+    }, 2000);
+}
+
+// Lazy loading fallback
+function initLazyLoading() {
+    if ('loading' in HTMLImageElement.prototype) {
+        return;
+    }
+
+    const lazyImages = document.querySelectorAll('img[loading=\"lazy\"]');
+    const imageObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src || img.src;
+                img.removeAttribute('loading');
+                imageObserver.unobserve(img);
+            }
+        });
+    });
+
+    lazyImages.forEach(img => imageObserver.observe(img));
+}
+
+// Load more posts
+function initLoadMore() {
+    const loadMoreBtn = document.getElementById('load-more');
+    if (!loadMoreBtn) return;
+
+    const hiddenPosts = document.querySelectorAll('.blog-card.hidden');
+    if (hiddenPosts.length === 0) {
+        loadMoreBtn.style.display = 'none';
+        return;
+    }
+
+    let currentlyVisible = 0;
+    const postsPerLoad = 6;
+
+    loadMoreBtn.addEventListener('click', () => {
+        const postsToShow = Array.from(hiddenPosts).slice(currentlyVisible, currentlyVisible + postsPerLoad);
+        postsToShow.forEach((post, index) => {
+            post.classList.remove('hidden');
+            post.style.animationDelay = `${index * 0.1}s`;
+            post.classList.add('fade-in', 'visible');
+        });
+
+        currentlyVisible += postsPerLoad;
+        if (currentlyVisible >= hiddenPosts.length) {
+            loadMoreBtn.style.display = 'none';
+        }
+    });
+}
+
+// Utilities
+function isValidEmail(email) {
+    return /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email);
+}
+
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
+function simulateSubmit(delay = 1000) {
+    return new Promise(resolve => setTimeout(resolve, delay));
 }
