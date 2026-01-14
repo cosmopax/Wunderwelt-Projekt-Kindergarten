@@ -87,7 +87,7 @@
 
         <!-- VISUAL HERO -->
         <div class="hero-image-container fade-in delay-1">
-            <img src="assets/images/hero.png" alt="Solicarpunk Urban Paradise" class="hero-image">
+            <img src="assets/images/hero.png" alt="Solarpunk Urban Paradise" class="hero-image">
             <div class="overlay-text">The Future is Grown, Not Built.</div>
         </div>
 
@@ -177,6 +177,86 @@
             </article>
         </section>
 
+        <!-- ACTION MODULES -->
+        <section class="principles-section fade-in delay-3" id="action-modules">
+            <div class="section-header center-text">
+                <span class="tag">Action Modules</span>
+                <h2>Urban Autarky Playbook</h2>
+                <p>Research-translated protocols for resilient, cooperative neighborhoods.</p>
+            </div>
+
+            <div class="principles-grid">
+                <article class="principle-card">
+                    <h3>Microgrid Sovereignty</h3>
+                    <p>Decentralize energy into local clusters so critical loads remain powered during grid shocks.</p>
+                    <p><strong>Action:</strong> Install rooftop solar + shared battery banks sized for 72-hour autonomy.</p>
+                </article>
+
+                <article class="principle-card">
+                    <h3>Closed-Loop Water</h3>
+                    <p>Recover and reuse water locally to buffer droughts and reduce municipal dependence.</p>
+                    <p><strong>Action:</strong> Pair rain capture with greywater recycling and on-site filtration nodes.</p>
+                </article>
+
+                <article class="principle-card">
+                    <h3>Food Stack Density</h3>
+                    <p>Layer vertical farms, aquaponics, and community gardens to compress food production into walkable zones.</p>
+                    <p><strong>Action:</strong> Convert 10% of rooftops into hydroponic terraces and edible corridors.</p>
+                </article>
+
+                <article class="principle-card">
+                    <h3>Gift + Liquid Governance</h3>
+                    <p>Decision-making runs on delegated expertise, while surplus flows through gifting protocols.</p>
+                    <p><strong>Action:</strong> Launch a local delegation registry and a communal resource ledger.</p>
+                </article>
+
+                <article class="principle-card">
+                    <h3>Resilience Rituals</h3>
+                    <p>High-trust cultures survive crises better than infrastructure alone.</p>
+                    <p><strong>Action:</strong> Schedule weekly skill shares and seasonal repair festivals.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- CONCEPT VISUALS -->
+        <section class="concept-section fade-in delay-3">
+            <div class="section-header center-text">
+                <span class="tag">Concept Visuals</span>
+                <h2>High-Tech Commons</h2>
+                <p>Prototype imagery for the garden and fabrication cores of a 150-peer node.</p>
+            </div>
+
+            <div class="concept-grid">
+                <article class="feature-card concept-card">
+                    <div class="concept-art garden" role="img" aria-label="High-tech community garden with hydroponic towers and sensor canopy"></div>
+                    <div class="concept-content">
+                        <div class="card-header">
+                            <span class="tag">Food Systems</span>
+                            <h2>High-Tech Community Gardens</h2>
+                        </div>
+                        <p>Sensor-guided hydroponics, pollinator corridors, and biochar soil banks keep nutrient cycles hyper-local.</p>
+                        <div class="action-box">
+                            <strong>Action:</strong> Pilot modular planters with open-data climate dashboards.
+                        </div>
+                    </div>
+                </article>
+
+                <article class="feature-card concept-card">
+                    <div class="concept-art lab" role="img" aria-label="Shared fabrication lab with clean energy tools and modular workbenches"></div>
+                    <div class="concept-content">
+                        <div class="card-header">
+                            <span class="tag">Fabrication</span>
+                            <h2>Shared Fabrication Labs</h2>
+                        </div>
+                        <p>Distributed maker spaces enable rapid repairs, local manufacturing, and community-led innovation.</p>
+                        <div class="action-box">
+                            <strong>Action:</strong> Equip a shared lab with 3D printers, CNC routers, and tool libraries.
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
         <!-- COMMUNITY RESOURCE NETWORK -->
         <section class="map-section fade-in delay-3">
             <div class="section-header center-text">
@@ -248,6 +328,18 @@
                     </div>
 
                     <div class="input-group">
+                        <label for="water-self">Water Self-Sufficiency (% captured/reused)</label>
+                        <input type="range" id="water-self" name="water-self" min="0" max="100" value="0">
+                        <span class="range-value" id="water-val">0%</span>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="waste-loop">Closed-Loop Waste (% diverted to reuse)</label>
+                        <input type="range" id="waste-loop" name="waste-loop" min="0" max="100" value="0">
+                        <span class="range-value" id="waste-val">0%</span>
+                    </div>
+
+                    <div class="input-group">
                         <label for="community-hours">Community Engagement (Hours/Week)</label>
                         <input type="range" id="community-hours" name="community-hours" min="0" max="40" value="0">
                         <span class="range-value" id="community-val">0h</span>
@@ -258,10 +350,42 @@
 
                 <div id="result-display" class="result-box hidden">
                     <h3>Your Autarky Score</h3>
+                    <p class="score-label" id="score-label">Status: —</p>
                     <div class="score-circle">
                         <span id="score-number">0</span>
                     </div>
                     <p id="score-message">Enter data to see your status.</p>
+                    <div class="score-breakdown">
+                        <div class="breakdown-item">
+                            <span class="breakdown-label">Energy</span>
+                            <div class="breakdown-bar"><span id="bar-energy"></span></div>
+                            <span class="breakdown-value" id="bar-energy-val">0%</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="breakdown-label">Food</span>
+                            <div class="breakdown-bar"><span id="bar-food"></span></div>
+                            <span class="breakdown-value" id="bar-food-val">0%</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="breakdown-label">Water</span>
+                            <div class="breakdown-bar"><span id="bar-water"></span></div>
+                            <span class="breakdown-value" id="bar-water-val">0%</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="breakdown-label">Waste</span>
+                            <div class="breakdown-bar"><span id="bar-waste"></span></div>
+                            <span class="breakdown-value" id="bar-waste-val">0%</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="breakdown-label">Community</span>
+                            <div class="breakdown-bar"><span id="bar-community"></span></div>
+                            <span class="breakdown-value" id="bar-community-val">0%</span>
+                        </div>
+                    </div>
+                    <div class="recommendations">
+                        <h4>Priority Actions</h4>
+                        <ul id="recommendations-list"></ul>
+                    </div>
                 </div>
             </div>
         </section>
