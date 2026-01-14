@@ -1,0 +1,9 @@
+# Robots.txt for Wunderwelt: Projekt Kindergarten
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://wunderwelt-projekt.org/sitemap.xml
+
+# Crawl-delay (be nice to servers)
+Crawl-delay: 1
