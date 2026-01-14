@@ -9,17 +9,29 @@
 ## Execution Order
 
 ```
-PARALLEL TRACK A (Research)          PARALLEL TRACK B (Content)
+PARALLEL TRACK A (Deep Research)     PARALLEL TRACK B (Initial Content)
 ┌─────────────────────────┐          ┌─────────────────────────┐
 │  QWEN (Research)        │          │  JULES (Assets/Content) │
 │  - Newsletter APIs      │          │  - Image prompts        │
-│  - Contact backends     │          │  - Blog outlines        │
+│  - Contact backends     │          │  - Blog outlines (3)    │
 │  - Media embeds         │          │  - Content templates    │
-└───────────┬─────────────┘          └───────────┬─────────────┘
-            │                                    │
-            └──────────────┬─────────────────────┘
-                           │
-                           ▼
+│  ──────────────────────  │          └───────────┬─────────────┘
+│  PRIORITY: Paper Mining │                       │
+│  - 30-50 academic papers │                      │
+│  - 6 research domains   │                       │
+│  - Key findings summary │                       │
+└───────────┬─────────────┘                       │
+            │                                     │
+            ▼                                     │
+┌───────────────────────────┐                    │
+│  JULES (Content Expansion)│◄───────────────────┘
+│  - Read Qwen's papers     │
+│  - Expand to 25 blog posts│
+│  - Research-backed outlines│
+│  - Interactive tool specs │
+└───────────┬───────────────┘
+            │
+            ▼
             ┌──────────────────────────┐
             │  MISTRAL (Coordination)  │
             │  - Relay findings        │

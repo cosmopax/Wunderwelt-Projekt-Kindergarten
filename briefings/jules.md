@@ -270,4 +270,85 @@ After completing:
 2. Signal **Mistral** to update file index
 3. Provide image prompts to human for AI generation
 
+---
+
+## TASK 6: Research-Driven Content Expansion
+
+**After Qwen completes paper research**, synthesize into expanded content plan.
+
+### Read Qwen's outputs:
+- `/briefings/research/PAPER_INDEX.md`
+- `/briefings/research/KEY_FINDINGS.md`
+- `/briefings/research/papers/*.md`
+
+### Create expanded blog plan (20-25 posts):
+
+**Urban Architecture Series (5 posts)**
+1. The 15-Minute City: From Theory to Practice
+2. Superblocks: Barcelona's Quiet Revolution
+3. Designing for 150: Dunbar-Scale Neighborhoods
+4. The Death of the Parking Lot
+5. Vertical Villages: Density Without Alienation
+
+**Education Reimagined Series (5 posts)**
+6. The City as Classroom: Place-Based Learning
+7. Forest Schools and the Neuroscience of Play
+8. Intergenerational Spaces: Learning Across Ages
+9. Democratic Schools: Self-Direction at Scale
+10. The Architecture of Learning Environments
+
+**Rewilding the City Series (5 posts)**
+11. Miyawaki Forests: Urban Wilderness in 20 Years
+12. Pollinator Pathways: Designing for Bees
+13. The Spontaneous City: Embracing Urban Wildness
+14. Blue-Green Infrastructure: Water as Life
+15. Soundscapes: The Acoustic Ecology of Cities
+
+**Governance & Commons Series (5 posts)**
+16. Ostrom's Principles for Urban Commons
+17. Participatory Budgeting: Democracy in Action
+18. Time Banks: Currency Beyond Money
+19. Cooperative Housing Models That Work
+20. Liquid Democracy Tools: A Practical Guide
+
+**Resilience Systems Series (5 posts)**
+21. Urban Food Sovereignty: The 80% Challenge
+22. Community Energy: Power to the People
+23. Circular Districts: Zero Waste at Scale
+24. Water Autonomy: Sponge City Principles
+25. The Autarky Score: Measuring Self-Sufficiency
+
+### For each post, create outline with:
+- Research citations (from Qwen's papers)
+- Key statistics
+- Actionable takeaways
+- Image prompt for hero
+- Related posts links
+
+### Output files:
+- `/briefings/content/expanded-blog-plan.md` - all 25 post outlines
+- `/briefings/content/research-cards.md` - new feature card concepts
+- `/briefings/content/interactive-tools.md` - calculator specs:
+  - Autarky Score Calculator
+  - 15-Minute Neighborhood Mapper
+  - Community Size Optimizer
+  - Green Coverage Estimator
+- `/briefings/content/infographic-briefs.md` - data visualizations
+
+---
+
+## Updated Deliverables Checklist
+
+- [ ] `/briefings/assets/image-prompts.md`
+- [ ] `/briefings/assets/ASSET_STRUCTURE.md`
+- [ ] `/briefings/content/post-template.md`
+- [ ] `/briefings/content/blog-outlines.md` (initial 3)
+- [ ] `/briefings/content/media-gallery-scaffold.html`
+- [ ] `/briefings/content/expanded-blog-plan.md` (25 posts)
+- [ ] `/briefings/content/research-cards.md`
+- [ ] `/briefings/content/interactive-tools.md`
+- [ ] `/briefings/content/infographic-briefs.md`
+
+---
+
 **Status:** CAN START IMMEDIATELY

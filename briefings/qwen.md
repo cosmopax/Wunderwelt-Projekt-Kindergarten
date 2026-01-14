@@ -194,4 +194,66 @@ After completing research:
 
 ---
 
+---
+
+## TASK 6: Academic Paper Research (PRIORITY)
+
+**Read full instructions:** `/briefings/research-directive.md`
+
+### Summary of research domains:
+1. **Urban Architecture** - 15-minute cities, superblocks, car-free design
+2. **Alternative Education** - democratic schools, forest schools, Reggio Emilia
+3. **Rewilding & Renaturalization** - urban ecology, Miyawaki forests, wildlife corridors
+4. **Social Governance** - commons theory, participatory budgeting, cohousing
+5. **Resilience Systems** - urban food, circular economy, community energy
+6. **Psychology of Place** - biophilia, attention restoration, soundscapes
+
+### Search platforms (prioritize open access):
+- arXiv.org, SSRN, CORE, Semantic Scholar, Google Scholar
+- UN-Habitat, C40 Cities, IPCC reports
+
+### Output structure:
+```
+/briefings/research/papers/
+├── urban-001-15-minute-city-moreno.md
+├── urban-002-superblocks-barcelona.md
+├── edu-001-forest-schools-outcomes.md
+├── rewild-001-miyawaki-method.md
+└── ...
+
+/briefings/research/
+├── PAPER_INDEX.md      # Master list
+├── KEY_FINDINGS.md     # Top 10 insights
+└── DATA_POINTS.md      # Stats for graphics
+```
+
+### Target: 30-50 paper summaries across all domains
+
+### Paper summary template:
+```markdown
+# [Title]
+**Citation:** [Full citation]
+**Domain:** [Category]
+**Key Findings:** [3 bullets]
+**Quote:** "[Relevant quote]"
+**Application:** [How it applies to Wunderwelt]
+**Content Potential:** [Blog/Card/Tool/Visual]
+```
+
+---
+
+## Updated Deliverables Checklist
+
+- [ ] `/briefings/research/newsletter-services.md`
+- [ ] `/briefings/research/contact-backends.md`
+- [ ] `/briefings/research/media-embeds.md`
+- [ ] `/briefings/research/validation-report.md`
+- [ ] `/briefings/research/inspiration.md`
+- [ ] `/briefings/research/papers/` - 30-50 paper summaries
+- [ ] `/briefings/research/PAPER_INDEX.md`
+- [ ] `/briefings/research/KEY_FINDINGS.md`
+- [ ] `/briefings/research/DATA_POINTS.md`
+
+---
+
 **Status:** CAN START IMMEDIATELY (parallel track)

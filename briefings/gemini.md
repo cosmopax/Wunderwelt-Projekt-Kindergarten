@@ -44,7 +44,7 @@ Single article page template:
 - Related posts section at bottom
 - Share buttons placeholder (social icons)
 
-### 1.3 Create 3 sample posts
+### 1.3 Create initial 3 sample posts
 
 Create in `/blog/`:
 - `urban-autarky-manifesto.html` - About self-sufficient cities
@@ -52,6 +52,53 @@ Create in `/blog/`:
 - `liquid-democracy-tools.html` - Tech for community governance
 
 Each ~300 words placeholder content referencing the scientific concepts from AGENT_BRIEFING.md.
+
+### 1.4 Create expanded posts (after Jules content expansion)
+
+**Read:** `/briefings/content/expanded-blog-plan.md`
+
+Create full blog post series (25 total) organized in subfolders:
+
+```
+/blog/
+├── urban-architecture/
+│   ├── 15-minute-city.html
+│   ├── superblocks-barcelona.html
+│   ├── dunbar-scale-neighborhoods.html
+│   ├── death-of-parking-lot.html
+│   └── vertical-villages.html
+├── education/
+│   ├── city-as-classroom.html
+│   ├── forest-schools-neuroscience.html
+│   ├── intergenerational-spaces.html
+│   ├── democratic-schools.html
+│   └── architecture-of-learning.html
+├── rewilding/
+│   ├── miyawaki-forests.html
+│   ├── pollinator-pathways.html
+│   ├── spontaneous-city.html
+│   ├── blue-green-infrastructure.html
+│   └── urban-soundscapes.html
+├── governance/
+│   ├── ostrom-principles.html
+│   ├── participatory-budgeting.html
+│   ├── time-banks.html
+│   ├── cooperative-housing.html
+│   └── liquid-democracy-guide.html
+└── resilience/
+    ├── urban-food-sovereignty.html
+    ├── community-energy.html
+    ├── circular-districts.html
+    ├── sponge-city-principles.html
+    └── autarky-score.html
+```
+
+Each post should:
+- Include research citations from `/briefings/research/papers/`
+- Reference key statistics from `/briefings/research/DATA_POINTS.md`
+- Have proper meta tags for SEO
+- Include related posts section
+- End with newsletter CTA
 
 ---
 
