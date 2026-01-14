@@ -28,6 +28,30 @@
     /* Typography */
     --font-heading: 'Outfit', sans-serif;
     --font-body: 'Inter', sans-serif;
+
+    /* Legacy + component aliases */
+    --bg-color: var(--bg-deep);
+    --text-color: var(--text-secondary);
+    --accent-color: var(--accent-gold);
+    --tag-bg: rgba(255, 215, 0, 0.1);
+    --tag-text: var(--accent-gold);
+    --card-bg: var(--bg-card);
+    --card-border: rgba(255, 255, 255, 0.08);
+    --hover-effect: rgba(255, 255, 255, 0.08);
+    --link-color: var(--accent-gold);
+
+    /* Status + layout tokens */
+    --success-color: #4ade80;
+    --error-color: #f87171;
+    --warning-color: #fbbf24;
+    --gradient-gold: linear-gradient(135deg, #ffd700 0%, #ffb700 100%);
+    --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.3);
+    --shadow-glow: 0 0 30px rgba(255, 215, 0, 0.2);
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    --transition-fast: 0.2s ease;
+    --transition-med: 0.3s ease;
 }
 
 /* --- RESET & BASE --- */
