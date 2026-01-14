@@ -20,7 +20,7 @@
                 <li><a href="index.html">Home</a></li>
                 <li><a href="blog.html">Journal</a></li>
                 <li><a href="contact.html" class="active">Connect</a></li>
-                <li><a href="about.html">About</a></li>
+                <li><a href="manifesto.html">Manifesto</a></li>
             </ul>
         </div>
     </nav>
@@ -91,7 +91,7 @@
             <div class="newsletter-box">
                 <h2>Prefer to just listen?</h2>
                 <p class="newsletter-subtitle">Subscribe for monthly dispatches — no reply needed.</p>
-                <form class="newsletter-form" action="#" method="POST">
+                <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing! (This is a demo)');">
                     <div class="form-row">
                         <input type="email" name="email" placeholder="your@email.com" required>
                         <button type="submit" class="btn-subscribe">Subscribe</button>
@@ -112,27 +112,24 @@
                 <h4>Explore</h4>
                 <ul>
                     <li><a href="blog.html">Journal</a></li>
-                    <li><a href="blog/urban-architecture/">Urban Architecture</a></li>
-                    <li><a href="blog/education/">Education</a></li>
-                    <li><a href="blog/rewilding/">Rewilding</a></li>
-                    <li><a href="blog/governance/">Governance</a></li>
-                    <li><a href="blog/resilience/">Resilience</a></li>
+                    <li><a href="blog.html?filter=urban-architecture">Urban Architecture</a></li>
+                    <li><a href="blog.html?filter=education">Education</a></li>
+                    <li><a href="blog.html?filter=rewilding">Rewilding</a></li>
+                    <li><a href="blog.html?filter=governance">Governance</a></li>
+                    <li><a href="blog.html?filter=resilience">Resilience</a></li>
                 </ul>
             </div>
             <div class="footer-links">
                 <h4>Connect</h4>
                 <ul>
                     <li><a href="contact.html">Contact</a></li>
-                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="manifesto.html">About Us</a></li>
                     <li><a href="#newsletter">Newsletter</a></li>
                 </ul>
             </div>
             <div class="footer-social">
                 <h4>Follow</h4>
                 <div class="social-icons">
-                    <a href="#" aria-label="Mastodon" class="social-link">
-                        <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M21.327 8.566c0-4.339-2.843-5.61-2.843-5.61-1.433-.658-3.894-.935-6.451-.956h-.063c-2.557.021-5.016.298-6.45.956 0 0-2.843 1.272-2.843 5.61 0 .993-.019 2.181.012 3.441.103 4.243.778 8.425 4.701 9.463 1.809.479 3.362.579 4.612.51 2.268-.126 3.541-.809 3.541-.809l-.075-1.646s-1.621.511-3.441.449c-1.804-.062-3.707-.194-3.999-2.409a4.523 4.523 0 0 1-.04-.621s1.77.432 4.014.535c1.372.063 2.658-.08 3.965-.236 2.506-.299 4.688-1.843 4.962-3.254.434-2.223.398-5.424.398-5.424zm-3.353 5.59h-2.081V9.057c0-1.075-.452-1.62-1.357-1.62-1 0-1.501.647-1.501 1.927v2.791h-2.069V9.364c0-1.28-.501-1.927-1.502-1.927-.905 0-1.357.546-1.357 1.62v5.099H6.026V8.903c0-1.074.273-1.927.823-2.558.566-.631 1.307-.955 2.228-.955 1.065 0 1.872.41 2.405 1.228l.518.869.519-.869c.533-.818 1.34-1.228 2.405-1.228.92 0 1.662.324 2.228.955.549.631.822 1.484.822 2.558v5.253z"/></svg>
-                    </a>
                     <a href="#" aria-label="GitHub" class="social-link">
                         <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
                     </a>
