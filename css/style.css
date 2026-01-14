@@ -578,7 +578,14 @@ input[type=range]::-webkit-slider-runnable-track {
     }
     .hero h1 { font-size: 3rem; }
     
+    /* Responsive Navigation */
+    .nav-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
     .nav-links {
-        display: none; /* simple mobile hide for now, could be burger */
+        display: flex;
+        gap: 1.5rem;
+        font-size: 0.9rem;
     }
 }
