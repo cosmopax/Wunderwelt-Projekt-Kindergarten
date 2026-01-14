@@ -21,37 +21,317 @@
 <body>
 
     <main class="container">
+        
+        <!-- HERO SECTION -->
         <header class="hero">
             <h1 class="fade-in">Wunderwelt <span class="highlight">Projekt Kindergarten</span></h1>
             <p class="subtitle fade-in delay-1">REIMAGINING URBAN EXISTENCE</p>
         </header>
 
-        <section class="intro fade-in delay-2" style="text-align: center; margin-bottom: 3rem; max-width: 800px; margin-left: auto; margin-right: auto;">
-            <p style="font-size: 1.2rem; color: rgba(255,255,255,0.8);">
+        <!-- VISUAL HERO -->
+        <div class="hero-image-container fade-in delay-1">
+            <img src="assets/images/hero.png" alt="Solicarpunk Urban Paradise" class="hero-image">
+            <div class="overlay-text">The Future is Grown, Not Built.</div>
+        </div>
+
+        <section class="intro fade-in delay-2">
+            <p class="lead-text">
                 Not a daycare, but a metaphorical <strong style="color: var(--accent-color);">Urban Paradise</strong>. 
                 We are redesigning cultural and social behavior to foster cooperation, local networks, and true autarky.
             </p>
         </section>
 
-        <section class="content-grid fade-in delay-3">
-            <div class="card">
-                <h2>Shared Laboratories</h2>
-                <p>Open workspaces for experimentation, prototyping, and collective innovation.</p>
+        <!-- ACTIONABLE SCIENCE GRID -->
+        <section class="science-grid fade-in delay-3">
+            
+            <article class="feature-card">
+                <div class="card-header">
+                    <span class="tag">Sociology</span>
+                    <h2>Social Architecture</h2>
+                </div>
+                <p>Applying <strong>Dunbar's Number</strong> to urban planning. Communities are capped at 150 active peers to ensure accountability and deep social bonding without the alienation of mega-cities.</p>
+                <div class="action-box">
+                    <strong>Action:</strong> Decentralized "Village Nodes" within high-density blocks.
+                </div>
+            </article>
+
+            <article class="feature-card">
+                <div class="card-header">
+                    <span class="tag">Psychology</span>
+                    <h2>Cognitive Urbanism</h2>
+                </div>
+                <p>Leveraging <strong>Biophilic Design</strong> to reduce cortisol levels. Fractals in architecture and pervasive greenery are not just aesthetic—they are cognitive health interventions.</p>
+                <div class="action-box">
+                    <strong>Action:</strong> 40% Green Coverage Mandate for all vertical surfaces.
+                </div>
+            </article>
+
+            <article class="feature-card wide">
+                <div class="image-half">
+                    <img src="assets/images/lab.png" alt="Shared Laboratory in Garden">
+                </div>
+                <div class="text-half">
+                    <div class="card-header">
+                        <span class="tag">PolSci & Economy</span>
+                        <h2>The Gift Economy 2.0</h2>
+                    </div>
+                    <p>Moving beyond transactionism. <strong>Liquid Democracy</strong> tools allocate shared resources in real-time, fostering a culture where giving enhances social capital more than hoarding.</p>
+                    <div class="action-box">
+                        <strong>Action:</strong> "Library of Things" & Open-Source Fabrication Labs in every district.
+                    </div>
+                </div>
+            </article>
+
+            <article class="feature-card">
+                <div class="card-header">
+                    <span class="tag">Cybernetics</span>
+                    <h2>Radical Autarky</h2>
+                </div>
+                <p>Closed-loop systems for energy and food. Vertical farming handles 80% of caloric needs locally. Waste is nutrient input.</p>
+                <div class="action-box">
+                    <strong>Action:</strong> Rooftop Aquaponics & Solar Glass integration.
+                </div>
+            </article>
+            
+            <article class="feature-card">
+                <div class="card-header">
+                    <span class="tag">Anthropology</span>
+                    <h2>Ritual & Play</h2>
+                </div>
+                <p>Reclaiming public space for "Infinite Games". Life is not a race to production, but a collaborative canvas for expression and collective joy.</p>
+                <div class="action-box">
+                    <strong>Action:</strong> Car-free "Play Zones" replacing central arteries.
+                </div>
+            </article>
+
+        </section>
+
+        <!-- AUTARKY CALCULATOR -->
+        <section class="calculator-section fade-in">
+            <div class="section-header">
+                <span class="tag">Interactive Tool</span>
+                <h2>Autarky Score Calculator</h2>
+                <p class="section-desc">Calculate your community's potential for self-sufficiency based on local resources and infrastructure.</p>
             </div>
-            <div class="card">
-                <h2>Autarky & Energy</h2>
-                <p>Producing our own energy and food. Redefining resource independence.</p>
-            </div>
-            <div class="card">
-                <h2>Renaturalisation</h2>
-                <p>Reclaiming public space for nature. Redesigning living environments for life.</p>
-            </div>
-             <div class="card">
-                <h2>Local Networks</h2>
-                <p>Fostering deep cooperation and social resilience in the urban fabric.</p>
+            
+            <div class="calculator-grid">
+                <div class="calculator-inputs">
+                    <div class="input-group">
+                        <label for="energy">Local Energy Production (%)</label>
+                        <input type="range" id="energy" min="0" max="100" value="30" class="slider">
+                        <span class="value-display" id="energy-value">30%</span>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="food">Food Production Capacity (%)</label>
+                        <input type="range" id="food" min="0" max="100" value="20" class="slider">
+                        <span class="value-display" id="food-value">20%</span>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="water">Water Self-Sufficiency (%)</label>
+                        <input type="range" id="water" min="0" max="100" value="40" class="slider">
+                        <span class="value-display" id="water-value">40%</span>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="waste">Closed-Loop Waste Management (%)</label>
+                        <input type="range" id="waste" min="0" max="100" value="25" class="slider">
+                        <span class="value-display" id="waste-value">25%</span>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="community">Community Cooperation Index</label>
+                        <input type="range" id="community" min="0" max="100" value="50" class="slider">
+                        <span class="value-display" id="community-value">50%</span>
+                    </div>
+                </div>
+
+                <div class="calculator-output">
+                    <div class="score-display">
+                        <div class="score-label">Your Autarky Score</div>
+                        <div class="score-number" id="autarky-score">33</div>
+                        <div class="score-rating" id="score-rating">Emerging</div>
+                    </div>
+                    
+                    <div class="score-breakdown">
+                        <h3>Breakdown:</h3>
+                        <div class="breakdown-item">
+                            <span>Energy Resilience</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="energy-bar" style="width: 30%"></div>
+                            </div>
+                        </div>
+                        <div class="breakdown-item">
+                            <span>Food Security</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="food-bar" style="width: 20%"></div>
+                            </div>
+                        </div>
+                        <div class="breakdown-item">
+                            <span>Water Independence</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="water-bar" style="width: 40%"></div>
+                            </div>
+                        </div>
+                        <div class="breakdown-item">
+                            <span>Waste Circularity</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="waste-bar" style="width: 25%"></div>
+                            </div>
+                        </div>
+                        <div class="breakdown-item">
+                            <span>Social Capital</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="community-bar" style="width: 50%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="recommendations" id="recommendations">
+                        <h3>Priority Actions:</h3>
+                        <ul id="rec-list">
+                            <li>Increase local food production through vertical farming</li>
+                            <li>Invest in solar panel infrastructure</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </section>
-    </main>
+
+        <!-- RESOURCE MAP -->
+        <section class="resource-map-section fade-in">
+            <div class="section-header">
+                <span class="tag">Visualization</span>
+                <h2>Community Resource Network</h2>
+                <p class="section-desc">Interactive map showing shared resources and collaboration nodes within a 150-person community cluster.</p>
+            </div>
+
+            <div class="resource-map">
+                <svg id="network-svg" viewBox="0 0 800 600" class="network-visualization">
+                    <!-- SVG will be populated by JS -->
+                </svg>
+                <div class="map-legend">
+                    <div class="legend-item"><span class="dot energy-dot"></span> Energy Hubs</div>
+                    <div class="legend-item"><span class="dot food-dot"></span> Food Production</div>
+                    <div class="legend-item"><span class="dot fab-dot"></span> Fab Labs</div>
+                    <div class="legend-item"><span class="dot social-dot"></span> Social Spaces</div>
+                </div>
+            </div>
+                </section>
+        
+                <!-- AUTARKY SCORE CALCULATOR -->
+                <section class="calculator-section fade-in delay-3">
+                    <div class="calculator-container feature-card">
+                        <div class="card-header center-text">
+                            <span class="tag">Interactive Tool</span>
+                            <h2>Autarky Score Calculator</h2>
+                            <p>Measure your community's resilience and independence potential.</p>
+                        </div>
+        
+                        <form id="autarky-form">
+                            <div class="input-group">
+                                <label for="food-production">Local Food Production (% of caloric intake)</label>
+                                <input type="range" id="food-production" name="food-production" min="0" max="100" value="0">
+                                <span class="range-value" id="food-val">0%</span>
+                            </div>
+        
+                            <div class="input-group">
+                                <label for="energy-indep">Energy Independence (% generated on-site)</label>
+                                <input type="range" id="energy-indep" name="energy-indep" min="0" max="100" value="0">
+                                <span class="range-value" id="energy-val">0%</span>
+                            </div>
+        
+                            <div class="input-group">
+                                <label for="community-hours">Community Engagement (Hours/Week)</label>
+                                <input type="range" id="community-hours" name="community-hours" min="0" max="40" value="0">
+                                <span class="range-value" id="community-val">0h</span>
+                            </div>
+        
+                            <button type="button" id="calculate-btn" class="cta-button">Calculate Score</button>
+                        </form>
+        
+                        <div id="result-display" class="result-box hidden">
+                            <h3>Your Autarky Score</h3>
+                            <div class="score-circle">
+                                <span id="score-number">0</span>
+                            </div>
+                            <p id="score-message">Enter data to see your status.</p>
+                        </div>
+                    </div>
+                </section>
+
+        <!-- COMMUNITY RESOURCE MAP -->
+        <section class="map-section fade-in delay-3">
+            <h2>Community <span class="highlight">Resource Map</span></h2>
+            <p class="subtitle">Visualizing local assets and shared infrastructure</p>
+
+            <div class="map-container">
+                <div class="resource-map">
+                    <!-- Interactive map will be generated here -->
+                    <div class="map-overlay">
+                        <div class="legend">
+                            <div class="legend-item">
+                                <div class="legend-color" style="background-color: #FF6B6B;"></div>
+                                <span>Energy Sources</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color" style="background-color: #5FAD61;"></div>
+                                <span>Food Production</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color" style="background-color: #4ECDC4;"></div>
+                                <span>Workspaces</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color" style="background-color: #FFE66D;"></div>
+                                <span>Community Spaces</span>
+                            </div>
+                        </div>
+
+                        <div class="map-controls">
+                            <button id="toggle-resources" class="control-btn">Toggle Resources</button>
+                            <button id="reset-view" class="control-btn">Reset View</button>
+                        </div>
+                    </div>
+
+                    <!-- Resource markers -->
+                    <div class="resource-marker energy" style="top: 20%; left: 15%;">
+                        <div class="marker-icon">⚡</div>
+                        <div class="tooltip">Solar Array</div>
+                    </div>
+                    <div class="resource-marker food" style="top: 40%; left: 30%;">
+                        <div class="marker-icon">🌱</div>
+                        <div class="tooltip">Vertical Farm</div>
+                    </div>
+                    <div class="resource-marker workspace" style="top: 60%; left: 20%;">
+                        <div class="marker-icon">🛠️</div>
+                        <div class="tooltip">Fabrication Lab</div>
+                    </div>
+                    <div class="resource-marker community" style="top: 30%; left: 60%;">
+                        <div class="marker-icon">🎪</div>
+                        <div class="tooltip">Community Center</div>
+                    </div>
+                    <div class="resource-marker food" style="top: 70%; left: 50%;">
+                        <div class="marker-icon">🌿</div>
+                        <div class="tooltip">Aquaponics System</div>
+                    </div>
+                    <div class="resource-marker energy" style="top: 50%; left: 75%;">
+                        <div class="marker-icon">🔋</div>
+                        <div class="tooltip">Battery Storage</div>
+                    </div>
+                    <div class="resource-marker workspace" style="top: 25%; left: 80%;">
+                        <div class="marker-icon">🔬</div>
+                        <div class="tooltip">Research Lab</div>
+                    </div>
+                    <div class="resource-marker community" style="top: 65%; left: 85%;">
+                        <div class="marker-icon">🌳</div>
+                        <div class="tooltip">Commons Garden</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+            </main>
 
     <!-- JS -->
     <script src="js/main.js"></script>
