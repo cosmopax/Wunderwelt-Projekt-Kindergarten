@@ -457,6 +457,11 @@ function initScrollEffects() {
 }
 
 function initAnimations() {
+    if (!('IntersectionObserver' in window)) {
+        document.querySelectorAll('.fade-in').forEach(el => el.classList.add('visible'));
+        return;
+    }
+
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {

@@ -268,4 +268,4 @@ cd /path/to/Wunderwelt-Projekt-Kindergarten
 
 ---
 
-**Status:** IN PROGRESS - initial HTML/CSS/JS updates underway
+**Status:** IN PROGRESS - core pages, nav/footer/newsletter, and JS behaviors implemented; research + blog content pending

@@ -1015,6 +1015,11 @@ body.nav-open {
     transition: transform var(--transition-fast), border-color var(--transition-fast);
 }
 
+.blog-card.featured {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+}
+
 .blog-card:hover {
     transform: translateY(-4px);
     border-color: var(--accent-color);
@@ -1025,6 +1030,14 @@ body.nav-open {
     height: 200px;
     object-fit: cover;
     display: block;
+}
+
+.blog-card.featured .blog-card-image {
+    height: 100%;
+}
+
+.blog-card.featured .blog-card-content {
+    padding: 2rem;
 }
 
 .blog-card-image-container {
@@ -1395,6 +1408,14 @@ blockquote {
 
     .footer-brand {
         grid-column: span 2;
+    }
+
+    .blog-card.featured {
+        grid-template-columns: 1fr;
+    }
+
+    .blog-card.featured .blog-card-image {
+        height: 220px;
     }
 }
 
