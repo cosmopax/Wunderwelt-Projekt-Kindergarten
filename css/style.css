@@ -405,6 +405,7 @@ section {
 
 input[type=range] {
     -webkit-appearance: none;
+    appearance: none;
     width: 100%;
     background: transparent;
     margin-bottom: 0.5rem;
@@ -445,6 +446,7 @@ input[type=range]::-webkit-slider-runnable-track {
     letter-spacing: 0.05em;
     width: 100%;
     margin-top: 1rem;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.2); /* Subtle default glow */
 }
 
 .cta-button:hover {

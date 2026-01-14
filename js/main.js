@@ -109,7 +109,7 @@ function initCalculator() {
 
 function updateSliderProgress(slider) {
     const percent = (slider.value - slider.min) / (slider.max - slider.min) * 100;
-    slider.style.background = `linear-gradient(to right, #ffd700 0%, #ffd700 ${percent}%, rgba(255, 255, 255, 0.1) ${percent}%, rgba(255, 255, 255, 0.1) 100%)`;
+    slider.style.background = `linear-gradient(to right, #FFD700 0%, #FFD700 ${percent}%, rgba(255, 255, 255, 0.1) ${percent}%, rgba(255, 255, 255, 0.1) 100%)`;
 }
 
 function updateBreakdown(values, elements) {
@@ -160,10 +160,10 @@ function getInterpretation(score) {
 }
 
 function getScoreColor(score) {
-    if (score < 25) return "#e0e0e0";
-    if (score < 50) return "#ffd700"; 
-    if (score < 75) return "#4caf50"; 
-    return "#00e676"; 
+    if (score < 25) return "#9ca3af"; // Muted text
+    if (score < 50) return "#FFD700"; // Gold
+    if (score < 75) return "#4ade80"; // Neon Green
+    return "#22d3ee"; // Cyan for Autarkic
 }
 
 function getRecommendations(metrics) {
@@ -215,10 +215,10 @@ function initResourceMap() {
     ];
 
     const colors = {
-        energy: '#FF6B6B',
-        food: '#5FAD61',
-        social: '#FFE66D',
-        tech: '#4ECDC4'
+        energy: '#ffaa00', // Amber/Orange
+        food: '#4ade80',   // Neon Green
+        social: '#FFD700', // Gold
+        tech: '#22d3ee'    // Cyan
     };
 
     // Draw connections with animation

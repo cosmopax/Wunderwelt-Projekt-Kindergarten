@@ -1585,4 +1585,4 @@ After completing, signal COPILOT to add:
 - Newsletter handlers
 - Scroll animations
 
-**Status:** WAITING FOR GEMINI-A HTML
+**Status:** IN PROGRESS - Added Action Modules + calculator enhancements; nav/footer/newsletter still pending

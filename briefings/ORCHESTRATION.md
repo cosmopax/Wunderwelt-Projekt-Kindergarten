@@ -268,4 +268,4 @@ cd /path/to/Wunderwelt-Projekt-Kindergarten
 
 ---
 
-**Status:** READY FOR EXECUTION
+**Status:** IN PROGRESS - initial HTML/CSS/JS updates underway
