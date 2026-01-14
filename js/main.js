@@ -6,45 +6,72 @@ document.addEventListener('DOMContentLoaded', () => {
     initExpandableCards();
     initSmoothScroll();
     initParallaxEffect();
+    initFAQ();
 });
 
 function initCalculator() {
-    const foodInput = document.getElementById('food-production');
-    const energyInput = document.getElementById('energy-indep');
-    const communityInput = document.getElementById('community-hours');
-    
-    const foodVal = document.getElementById('food-val');
-    const energyVal = document.getElementById('energy-val');
-    const communityVal = document.getElementById('community-val');
-    
+    const sliders = [
+        { id: 'food-production', valueId: 'food-val', unit: '%' },
+        { id: 'energy-indep', valueId: 'energy-val', unit: '%' },
+        { id: 'water-self', valueId: 'water-val', unit: '%' },
+        { id: 'waste-loop', valueId: 'waste-val', unit: '%' },
+        { id: 'community-hours', valueId: 'community-val', unit: 'h' }
+    ];
+
+    const primaryInput = document.getElementById(sliders[0].id);
+    if (!primaryInput) return;
+
+    sliders.forEach((slider) => {
+        const input = document.getElementById(slider.id);
+        const valueEl = document.getElementById(slider.valueId);
+        const updateValue = () => {
+            valueEl.textContent = `${input.value}${slider.unit}`;
+            updateSliderProgress(input);
+        };
+        input.addEventListener('input', updateValue);
+        updateValue();
+    });
+
     const calculateBtn = document.getElementById('calculate-btn');
     const resultBox = document.getElementById('result-display');
     const scoreNum = document.getElementById('score-number');
     const scoreMsg = document.getElementById('score-message');
+    const scoreLabel = document.getElementById('score-label');
+    const recommendationsList = document.getElementById('recommendations-list');
 
-    if (!foodInput) return;
-
-    // Update display values on input with real-time feedback
-    foodInput.addEventListener('input', (e) => {
-        foodVal.textContent = `${e.target.value}%`;
-        updateSliderProgress(foodInput);
-    });
-    energyInput.addEventListener('input', (e) => {
-        energyVal.textContent = `${e.target.value}%`;
-        updateSliderProgress(energyInput);
-    });
-    communityInput.addEventListener('input', (e) => {
-        communityVal.textContent = `${e.target.value}h`;
-        updateSliderProgress(communityInput);
-    });
+    const breakdown = {
+        energy: {
+            bar: document.getElementById('bar-energy'),
+            value: document.getElementById('bar-energy-val')
+        },
+        food: {
+            bar: document.getElementById('bar-food'),
+            value: document.getElementById('bar-food-val')
+        },
+        water: {
+            bar: document.getElementById('bar-water'),
+            value: document.getElementById('bar-water-val')
+        },
+        waste: {
+            bar: document.getElementById('bar-waste'),
+            value: document.getElementById('bar-waste-val')
+        },
+        community: {
+            bar: document.getElementById('bar-community'),
+            value: document.getElementById('bar-community-val')
+        }
+    };
 
     calculateBtn.addEventListener('click', () => {
-        const food = parseInt(foodInput.value);
-        const energy = parseInt(energyInput.value);
-        const community = parseInt(communityInput.value);
-        
+        const food = parseInt(document.getElementById('food-production').value, 10);
+        const energy = parseInt(document.getElementById('energy-indep').value, 10);
+        const water = parseInt(document.getElementById('water-self').value, 10);
+        const waste = parseInt(document.getElementById('waste-loop').value, 10);
+        const community = parseInt(document.getElementById('community-hours').value, 10);
+
         const communityScore = Math.min((community / 40) * 100, 100);
-        const totalScore = Math.round((food * 0.35) + (energy * 0.35) + (communityScore * 0.30));
+        const baseScore = (food + energy + water + waste) / 4;
+        const totalScore = Math.min(Math.round(baseScore * (1 + (communityScore / 100) * 0.2)), 100);
 
         resultBox.classList.remove('hidden');
         resultBox.classList.add('visible');
@@ -52,6 +79,25 @@ function initCalculator() {
         animateScore(scoreNum, totalScore);
         scoreMsg.textContent = getInterpretation(totalScore);
         scoreMsg.style.color = getScoreColor(totalScore);
+        if (scoreLabel) {
+            scoreLabel.textContent = `Status: ${getRating(totalScore)}`;
+        }
+
+        updateBreakdown({
+            energy,
+            food,
+            water,
+            waste,
+            community: communityScore
+        }, breakdown);
+
+        updateRecommendations(recommendationsList, getRecommendations({
+            food,
+            energy,
+            water,
+            waste,
+            community: communityScore
+        }));
         
         // Add visual feedback
         calculateBtn.textContent = '✓ Calculated!';
@@ -64,6 +110,26 @@ function initCalculator() {
 function updateSliderProgress(slider) {
     const percent = (slider.value - slider.min) / (slider.max - slider.min) * 100;
     slider.style.background = `linear-gradient(to right, #ffd700 0%, #ffd700 ${percent}%, rgba(255, 255, 255, 0.1) ${percent}%, rgba(255, 255, 255, 0.1) 100%)`;
+}
+
+function updateBreakdown(values, elements) {
+    Object.keys(values).forEach((key) => {
+        const entry = elements[key];
+        if (!entry || !entry.bar || !entry.value) return;
+        const clamped = Math.max(0, Math.min(100, values[key]));
+        entry.bar.style.width = `${clamped}%`;
+        entry.value.textContent = `${Math.round(clamped)}%`;
+    });
+}
+
+function updateRecommendations(listEl, recommendations) {
+    if (!listEl) return;
+    listEl.innerHTML = '';
+    recommendations.forEach((text) => {
+        const li = document.createElement('li');
+        li.textContent = text;
+        listEl.appendChild(li);
+    });
 }
 
 function animateScore(element, target) {
@@ -79,18 +145,48 @@ function animateScore(element, target) {
     }, 20);
 }
 
+function getRating(score) {
+    if (score < 25) return "Dependent";
+    if (score < 50) return "Emerging";
+    if (score < 75) return "Resilient";
+    return "Autarkic";
+}
+
 function getInterpretation(score) {
-    if (score < 30) return "Seedling Phase. Begin by planting a window garden and meeting one neighbor.";
-    if (score < 60) return "Sprouting Community. You have the basics. Focus on energy resilience.";
-    if (score < 85) return "Canopy Level. Highly resilient. Consider sharing resources with other nodes.";
-    return "Utopian Node. You are a fully autarkic, regenerative paradise.";
+    if (score < 25) return "Dependent. Start with energy basics and a shared food pilot.";
+    if (score < 50) return "Emerging. Stabilize local loops and expand cooperative capacity.";
+    if (score < 75) return "Resilient. Strengthen water and waste recovery, then share surplus.";
+    return "Autarkic. A regenerative node ready to mentor neighboring clusters.";
 }
 
 function getScoreColor(score) {
-    if (score < 30) return "#e0e0e0";
-    if (score < 60) return "#ffd700"; 
-    if (score < 85) return "#4caf50"; 
+    if (score < 25) return "#e0e0e0";
+    if (score < 50) return "#ffd700"; 
+    if (score < 75) return "#4caf50"; 
     return "#00e676"; 
+}
+
+function getRecommendations(metrics) {
+    const recommendations = [];
+    if (metrics.food < 50) {
+        recommendations.push("Establish vertical farming, rooftop planters, and aquaponic pilots.");
+    }
+    if (metrics.energy < 50) {
+        recommendations.push("Invest in solar rooftops, micro-wind, and shared battery storage.");
+    }
+    if (metrics.water < 60) {
+        recommendations.push("Add rain harvesting, greywater reuse, and on-site filtration.");
+    }
+    if (metrics.waste < 40) {
+        recommendations.push("Build repair cafes, compost hubs, and materials recovery points.");
+    }
+    if (metrics.community < 60) {
+        recommendations.push("Run weekly skill shares and launch a local delegation registry.");
+    }
+    if (recommendations.length === 0) {
+        recommendations.push("Maintain performance and mentor adjacent communities.");
+    }
+    return recommendations;
 }
 
 function initResourceMap() {
@@ -282,8 +378,3 @@ function initFAQ() {
         });
     });
 }
-
-// Initialize FAQ on load
-document.addEventListener('DOMContentLoaded', (e) => {
-    initFAQ();
-});

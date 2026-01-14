@@ -2,197 +2,269 @@
 
 ## Project: Wunderwelt - Projekt Kindergarten Enhancement
 
-**Objective:** Add Contact, Newsletter, Blog, and Media Integration features.
+**Agents:** 4 (Gemini-A, Gemini-B, Codex, Copilot, Qwen)
+**Objective:** Contact, Newsletter, Blog (25 posts), Media Integration
 
 ---
 
-## Execution Order
+## Agent Roster
 
-```
-PARALLEL TRACK A (Deep Research)     PARALLEL TRACK B (Initial Content)
-┌─────────────────────────┐          ┌─────────────────────────┐
-│  QWEN (Research)        │          │  JULES (Assets/Content) │
-│  - Newsletter APIs      │          │  - Image prompts        │
-│  - Contact backends     │          │  - Blog outlines (3)    │
-│  - Media embeds         │          │  - Content templates    │
-│  ──────────────────────  │          └───────────┬─────────────┘
-│  PRIORITY: Paper Mining │                       │
-│  - 30-50 academic papers │                      │
-│  - 6 research domains   │                       │
-│  - Key findings summary │                       │
-└───────────┬─────────────┘                       │
-            │                                     │
-            ▼                                     │
-┌───────────────────────────┐                    │
-│  JULES (Content Expansion)│◄───────────────────┘
-│  - Read Qwen's papers     │
-│  - Expand to 25 blog posts│
-│  - Research-backed outlines│
-│  - Interactive tool specs │
-└───────────┬───────────────┘
-            │
-            ▼
-            ┌──────────────────────────┐
-            │  MISTRAL (Coordination)  │
-            │  - Relay findings        │
-            │  - Update indexes        │
-            └──────────────┬───────────┘
-                           │
-                           ▼
-SEQUENTIAL TRACK (Implementation)
-┌─────────────────────────────────────┐
-│  GEMINI (Core Architecture)         │
-│  - Create blog.html                 │
-│  - Create contact.html              │
-│  - Add newsletter to index.html     │
-│  - Add navigation to all pages      │
-│  - Create blog post files           │
-└─────────────────┬───────────────────┘
-                  │
-                  ▼
-┌─────────────────────────────────────┐
-│  CODEX (CSS Styling)                │
-│  - Style navigation                 │
-│  - Style newsletter component       │
-│  - Style contact form               │
-│  - Style blog cards & posts         │
-│  - Style media gallery              │
-└─────────────────┬───────────────────┘
-                  │
-                  ▼
-┌─────────────────────────────────────┐
-│  COPILOT (JavaScript)               │
-│  - Form validation                  │
-│  - Newsletter handler               │
-│  - Smooth scroll                    │
-│  - Blog filtering                   │
-│  - Scroll animations                │
-└─────────────────┬───────────────────┘
-                  │
-                  ▼
-┌─────────────────────────────────────┐
-│  MISTRAL (Final)                    │
-│  - Completion report                │
-│  - Final index update               │
-└─────────────────────────────────────┘
-```
+| Agent | Briefing | Role | Can Start |
+|-------|----------|------|-----------|
+| **Qwen** | `qwen.md` | Research + Documentation | Immediately |
+| **Gemini-A** | `gemini-A.md` | Pages & Infrastructure | Immediately |
+| **Gemini-B** | `gemini-B.md` | Blog Content (25 posts) | After Qwen research |
+| **Codex** | `codex.md` | CSS Styling | After Gemini-A |
+| **Copilot** | `copilot.md` | JavaScript | After Codex |
 
 ---
 
-## Agent Role Summary
+## Execution Flow
 
-| Agent | Role | Strength Used | Can Start |
-|-------|------|---------------|-----------|
-| **Gemini** | Heavy lifting - HTML structure | Large context, coding | After Jules/Qwen |
-| **Codex** | CSS styling | Code completion | After Gemini |
-| **Copilot** | JavaScript logic | Interactive coding | After Codex |
-| **Qwen** | Research & search | Web search, analysis | Immediately |
-| **Mistral** | Coordination | Low-risk tasks | Immediately |
-| **Jules** | Content & assets | Creative generation | Immediately |
-
----
-
-## Communication Protocol
-
-### Message Flow:
-1. Qwen/Jules complete research/content → Signal Mistral
-2. Mistral creates relay messages → `/briefings/relay/`
-3. Gemini reads relays, implements structure → Signals Mistral
-4. Mistral relays to Codex → Codex styles → Signals Mistral
-5. Mistral relays to Copilot → Copilot adds JS → Signals Mistral
-6. Mistral creates completion report
-
-### Relay File Naming:
 ```
-/briefings/relay/
-├── 001-qwen-research-to-gemini.md
-├── 002-jules-content-to-gemini.md
-├── 003-gemini-structure-to-codex.md
-├── 004-codex-styles-to-copilot.md
-└── 005-completion-summary.md
+                    ┌─────────────────────────────────┐
+                    │         START PARALLEL          │
+                    └─────────────────────────────────┘
+                                    │
+              ┌─────────────────────┼─────────────────────┐
+              │                     │                     │
+              ▼                     ▼                     │
+    ┌─────────────────┐   ┌─────────────────┐            │
+    │     QWEN        │   │   GEMINI-A      │            │
+    │                 │   │                 │            │
+    │ • Newsletter    │   │ • Navigation    │            │
+    │   research      │   │ • Footer        │            │
+    │ • Contact       │   │ • Newsletter    │            │
+    │   backend       │   │   section       │            │
+    │ • 30-50 papers  │   │ • contact.html  │            │
+    │ • File index    │   │ • blog.html     │            │
+    │ • Image prompts │   │ • about.html    │            │
+    │                 │   │ • Post template │            │
+    └────────┬────────┘   └────────┬────────┘            │
+             │                     │                     │
+             │                     ▼                     │
+             │            ┌─────────────────┐            │
+             │            │     CODEX       │            │
+             │            │                 │            │
+             │            │ • Navigation    │            │
+             │            │   CSS           │            │
+             │            │ • Footer CSS    │            │
+             │            │ • Newsletter    │            │
+             │            │   CSS           │            │
+             │            │ • Forms CSS     │            │
+             │            │ • Blog CSS      │            │
+             │            │ • Post CSS      │            │
+             │            │ • Responsive    │            │
+             │            └────────┬────────┘            │
+             │                     │                     │
+             │                     ▼                     │
+             │            ┌─────────────────┐            │
+             │            │    COPILOT      │            │
+             │            │                 │            │
+             │            │ • Mobile nav    │            │
+             │            │ • Form          │            │
+             │            │   validation    │            │
+             │            │ • Newsletter    │            │
+             │            │   handler       │            │
+             │            │ • Blog filters  │            │
+             │            │ • Animations    │            │
+             │            │ • Share buttons │            │
+             │            └────────┬────────┘            │
+             │                     │                     │
+             ▼                     │                     │
+    ┌─────────────────┐            │                     │
+    │   GEMINI-B      │◄───────────┘                     │
+    │                 │                                  │
+    │ • 25 blog posts │                                  │
+    │   with research │                                  │
+    │   citations     │                                  │
+    │ • Action        │                                  │
+    │   modules       │                                  │
+    │ • References    │                                  │
+    └────────┬────────┘                                  │
+             │                                           │
+             ▼                                           │
+    ┌─────────────────────────────────────────────────────┐
+    │                    COMPLETE                         │
+    │                                                     │
+    │  Qwen: Final validation + completion report         │
+    └─────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## File Ownership
+## Detailed Execution Sequence
 
-| File/Folder | Primary Owner | Can Modify |
-|-------------|---------------|------------|
-| `index.html` | Gemini | Gemini |
-| `blog.html` | Gemini | Gemini |
-| `contact.html` | Gemini | Gemini |
-| `blog/*.html` | Gemini | Gemini |
-| `css/style.css` | Codex | Codex |
-| `js/main.js` | Copilot | Copilot |
-| `briefings/*.md` | Owner agent | Owner only |
-| `briefings/relay/*` | Mistral | Mistral only |
-| `briefings/research/*` | Qwen | Qwen |
-| `briefings/content/*` | Jules | Jules |
-| `briefings/assets/*` | Jules | Jules |
+### Phase 1: Parallel Start (Immediate)
+
+**Qwen starts:**
+1. Newsletter service research → `research/newsletter-services.md`
+2. Contact backend research → `research/contact-backends.md`
+3. Academic paper mining (all 6 domains)
+4. Create FILE_INDEX.md, PROGRESS.md
+
+**Gemini-A starts:**
+1. Add navigation to index.html
+2. Add footer to index.html
+3. Add newsletter section to index.html
+4. Create contact.html
+5. Create blog.html
+6. Create about.html
+7. Create blog/post-template.html
+8. Create includes/ components
+
+### Phase 2: CSS (After Gemini-A)
+
+**Codex:**
+1. Add new CSS variables
+2. Navigation styles (desktop + mobile)
+3. Footer styles
+4. Newsletter component styles
+5. Contact form styles
+6. Blog listing styles
+7. Single post styles
+8. About page styles
+9. Utility classes
+10. Responsive breakpoints
+
+### Phase 3: JavaScript (After Codex)
+
+**Copilot:**
+1. Navigation (toggle, scroll, active)
+2. Contact form validation
+3. Newsletter handlers
+4. Blog filters
+5. Reading time calculator
+6. Share buttons
+7. Scroll animations
+8. Smooth scroll
+9. Lazy loading
+
+### Phase 4: Blog Content (After Qwen Research)
+
+**Gemini-B:**
+1. Read Qwen's paper summaries
+2. Create 5 Urban Architecture posts
+3. Create 5 Education posts
+4. Create 5 Rewilding posts
+5. Create 5 Governance posts
+6. Create 5 Resilience posts
+7. Create 3 original posts (autarky, biophilic, liquid democracy)
+
+### Phase 5: Finalization
+
+**Qwen:**
+1. Validation testing
+2. Accessibility audit
+3. Final documentation
+4. Completion report
 
 ---
 
-## Conflict Resolution
+## File Ownership Matrix
 
-If two agents need to modify the same file:
-1. First agent completes and signals Mistral
-2. Mistral notifies second agent
-3. Second agent reads latest version before modifying
+| File/Folder | Owner | Dependencies |
+|-------------|-------|--------------|
+| `index.html` | Gemini-A | - |
+| `blog.html` | Gemini-A | - |
+| `contact.html` | Gemini-A | - |
+| `about.html` | Gemini-A | - |
+| `blog/post-template.html` | Gemini-A | - |
+| `blog/**/*.html` | Gemini-B | Qwen research |
+| `css/style.css` | Codex | Gemini-A HTML |
+| `js/main.js` | Copilot | Codex CSS |
+| `briefings/research/*` | Qwen | - |
+| `briefings/FILE_INDEX.md` | Qwen | - |
+| `briefings/PROGRESS.md` | Qwen | - |
+| `briefings/assets/*` | Qwen | - |
 
 ---
 
-## Emergency Protocols
+## Deliverables Summary
 
-### If agent is stuck:
-1. Document blocker in relay message
-2. Mistral escalates to human
-3. Continue with non-blocked tasks
+### Pages (Gemini-A)
+- [ ] `index.html` (updated with nav, newsletter, footer)
+- [ ] `blog.html`
+- [ ] `contact.html`
+- [ ] `about.html`
+- [ ] `blog/post-template.html`
 
-### If conflict detected:
-1. Stop modifications to conflicting file
-2. Mistral creates merge instructions
-3. Human or Gemini resolves
+### Blog Posts (Gemini-B) - 28 total
+- [ ] 5 Urban Architecture posts
+- [ ] 5 Education posts
+- [ ] 5 Rewilding posts
+- [ ] 5 Governance posts
+- [ ] 5 Resilience posts
+- [ ] 3 Original posts
+
+### Styles (Codex)
+- [ ] Complete `css/style.css` with all components
+
+### Scripts (Copilot)
+- [ ] Complete `js/main.js` with all functionality
+
+### Research (Qwen)
+- [ ] 30-50 paper summaries
+- [ ] Service integration docs
+- [ ] File index
+- [ ] Progress tracking
+- [ ] Image prompts
+- [ ] Validation report
+
+---
+
+## Terminal Commands
+
+### Start Parallel Agents
+
+```bash
+# Terminal 1: Qwen (research)
+cd /path/to/Wunderwelt-Projekt-Kindergarten
+# Run Qwen with briefings/qwen.md
+
+# Terminal 2: Gemini-A (pages)
+cd /path/to/Wunderwelt-Projekt-Kindergarten
+# Run Gemini with briefings/gemini-A.md
+```
+
+### After Gemini-A Completes
+
+```bash
+# Terminal 3: Codex (CSS)
+cd /path/to/Wunderwelt-Projekt-Kindergarten
+# Run Codex with briefings/codex.md
+```
+
+### After Codex Completes
+
+```bash
+# Terminal 4: Copilot (JS)
+cd /path/to/Wunderwelt-Projekt-Kindergarten
+# Run Copilot with briefings/copilot.md
+```
+
+### After Qwen Research Ready
+
+```bash
+# Terminal 5: Gemini-B (blog posts)
+cd /path/to/Wunderwelt-Projekt-Kindergarten
+# Run Gemini with briefings/gemini-B.md
+```
 
 ---
 
 ## Success Criteria
 
-- [ ] All pages have consistent navigation
-- [ ] Newsletter signup works (at least frontend)
-- [ ] Contact form validates and shows feedback
-- [ ] Blog listing shows 3 sample posts
-- [ ] Individual posts render correctly
-- [ ] All new components match existing aesthetic
-- [ ] Site works without JavaScript (graceful degradation)
-- [ ] Mobile responsive
-
----
-
-## Launch Command Sequence
-
-```bash
-# Start parallel tracks first
-# Terminal 1: Qwen
-cd /path/to/project && qwen-agent briefings/qwen.md
-
-# Terminal 2: Jules
-cd /path/to/project && jules-agent briefings/jules.md
-
-# Terminal 3: Mistral (coordination - keep running)
-cd /path/to/project && mistral-agent briefings/mistral.md
-
-# After research complete, start sequential:
-# Terminal 4: Gemini
-cd /path/to/project && gemini-agent briefings/gemini.md
-
-# After Gemini complete:
-# Terminal 5: Codex
-cd /path/to/project && codex-agent briefings/codex.md
-
-# After Codex complete:
-# Terminal 6: Copilot
-cd /path/to/project && copilot-agent briefings/copilot.md
-```
+- [ ] All pages load without errors
+- [ ] Navigation works on mobile and desktop
+- [ ] All forms validate and show feedback
+- [ ] Newsletter signup functional
+- [ ] Contact form functional
+- [ ] Blog filters work
+- [ ] 28 blog posts with research citations
+- [ ] Fully responsive design
+- [ ] Animations smooth
+- [ ] Accessibility audit passes
 
 ---
 

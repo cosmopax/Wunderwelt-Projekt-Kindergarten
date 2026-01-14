@@ -1,259 +1,578 @@
-# QWEN AGENT BRIEFING: Research & Task Running
+# QWEN BRIEFING: Research, Integration & Documentation
 
-**Priority:** MEDIUM - Parallel research track.
+**Priority:** HIGH - Runs parallel to all other agents
 **Root:** `/Users/cosmopax/Desktop/projx/academic_webpages/_workspace_antigravity_homepages/Wunderwelt-Projekt-Kindergarten`
 
-## Mission
-
-Research optimal solutions for newsletter and contact backends. Run validation tasks. Search for embeddable media solutions. Report findings to other agents via Mistral.
+**Responsibilities:**
+- Academic paper research (from Jules)
+- Service integration research (newsletter, forms)
+- File indexing and documentation (from Mistral)
+- Validation and testing
+- Progress tracking
 
 ---
 
 ## TASK 1: Newsletter Service Research
 
-Search and evaluate these options for a **static site newsletter**:
+### Services to Evaluate:
 
-### Options to Research:
-
-1. **Buttondown** - Simple, markdown-friendly
-2. **Mailchimp** - Free tier, embeddable forms
+1. **Buttondown** - Markdown-friendly, simple
+2. **Mailchimp** - Free tier, embeddable
 3. **ConvertKit** - Creator-focused
-4. **Substack** - If blog integration desired
-5. **EmailOctopus** - Budget option
+4. **EmailOctopus** - Budget option
+5. **Substack** - Blog integration
 
-### Evaluation Criteria:
-
-- Free tier limits (subscribers, emails/month)
-- Embeddable form HTML (no backend needed)
+### Research Criteria:
+- Free tier limits (subscribers/month, emails/month)
+- Embeddable HTML form (no backend needed)
 - GDPR compliance
-- Ease of integration with static HTML
-- API availability for future automation
+- Double opt-in support
+- API for automation
 
-### Output:
-
-Create file: `/briefings/research/newsletter-services.md`
+### Output: `/briefings/research/newsletter-services.md`
 
 ```markdown
 # Newsletter Service Comparison
 
-## Recommended: [Service Name]
-Reason: [Why]
+## Recommendation: [SERVICE]
+**Reason:** [Why best for this project]
 
-## Comparison Table
-| Service | Free Tier | Embed Support | GDPR | Notes |
-|---------|-----------|---------------|------|-------|
-| ... | ... | ... | ... | ... |
+## Comparison
+
+| Service | Free Tier | Form Embed | GDPR | API | Notes |
+|---------|-----------|------------|------|-----|-------|
+| Buttondown | 100 subs | Yes | Yes | Yes | |
+| Mailchimp | 500 subs | Yes | Yes | Yes | |
+| ConvertKit | 300 subs | Yes | Yes | Yes | |
+| EmailOctopus | 2500 subs | Yes | Yes | Yes | |
 
 ## Integration Code
-[Paste embed code example for recommended service]
+
+### Recommended: [SERVICE]
+
+Form HTML:
+```html
+<form action="[ENDPOINT]" method="POST">
+    <input type="email" name="email" required>
+    <button type="submit">Subscribe</button>
+</form>
+```
+
+Hidden fields needed:
+- [field]: [purpose]
+
+### Alternative: [SERVICE 2]
+[Backup option code]
 ```
 
 ---
 
 ## TASK 2: Contact Form Backend Research
 
-For a **static site with no server**, research:
+### Services to Evaluate:
 
-### Options:
-
-1. **Formspree** - Form-to-email service
-2. **Netlify Forms** - If hosting on Netlify
-3. **Web3Forms** - Free, no signup needed
-4. **Getform** - Simple API
+1. **Formspree** - Simple form-to-email
+2. **Web3Forms** - Free, no signup
+3. **Getform** - Simple API
+4. **Netlify Forms** - If on Netlify
 5. **Basin** - GDPR-friendly
 
-### Evaluation Criteria:
-
+### Research Criteria:
 - Free submissions per month
 - Spam protection (honeypot, captcha)
 - Email notifications
-- No backend requirement
 - Custom redirect support
+- File upload support
+- GDPR compliance
 
-### Output:
-
-Create file: `/briefings/research/contact-backends.md`
+### Output: `/briefings/research/contact-backends.md`
 
 ```markdown
 # Contact Form Backend Comparison
 
-## Recommended: [Service Name]
-Reason: [Why]
+## Recommendation: [SERVICE]
+**Reason:** [Why]
 
-## Integration Steps
-1. [Step]
-2. [Step]
+## Comparison
 
-## Form Action URL
-`https://[service]/[endpoint]`
+| Service | Free/Month | Spam Protection | Files | GDPR |
+|---------|------------|-----------------|-------|------|
+| Formspree | 50 | Honeypot + reCAPTCHA | Yes | Yes |
+| Web3Forms | 250 | Honeypot + hCaptcha | No | Yes |
+| Getform | 50 | reCAPTCHA | Yes | Yes |
 
-## Required Hidden Fields
-[If any]
+## Integration
+
+### Form Action
+```html
+<form action="https://[service]/[endpoint]" method="POST">
+```
+
+### Required Hidden Fields
+```html
+<input type="hidden" name="_subject" value="New Contact Form Submission">
+<input type="hidden" name="_next" value="https://yoursite.com/thanks">
+<input type="text" name="_gotcha" style="display:none"> <!-- Honeypot -->
+```
+
+### Success/Error Handling
+[How to handle responses]
 ```
 
 ---
 
-## TASK 3: Embeddable Media Solutions
+## TASK 3: Academic Paper Research
 
-Research embeddable media for the site:
+**Full instructions:** See `/briefings/research-directive.md`
 
-### Video:
+### Research Domains:
 
-- YouTube embed optimization (privacy-enhanced mode)
-- Vimeo embed options
-- Self-hosted HTML5 video considerations
+#### A. Urban Architecture (8-10 papers)
+Search terms:
+- `"15-minute city" urban planning`
+- `"superblocks" Barcelona model`
+- `"car-free cities" pedestrian`
+- `Dunbar number community size`
+- `"vertical village" high-density housing`
 
-### Social:
+Key authors: Carlos Moreno, Jan Gehl, Donald Shoup
 
-- Twitter/X embed widgets
-- Instagram embed limitations
-- Mastodon embed options (for decentralized alignment)
+#### B. Alternative Education (6-8 papers)
+Search terms:
+- `"forest schools" outcomes research`
+- `"democratic education" Sudbury`
+- `"place-based education" learning`
+- `"intergenerational learning" programs`
+- `"biophilic classroom" design`
 
-### Output:
+Key sources: Peter Gray, David Sobel
 
-Create file: `/briefings/research/media-embeds.md`
+#### C. Rewilding & Ecology (6-8 papers)
+Search terms:
+- `"Miyawaki method" urban forest`
+- `"urban pollinators" corridors`
+- `"novel ecosystems" urban ecology`
+- `"blue-green infrastructure" cities`
+- `"urban soundscape" acoustic ecology`
+
+Key authors: Akira Miyawaki, Ingo Kowarik
+
+#### D. Governance & Commons (5-7 papers)
+Search terms:
+- `Ostrom "design principles" commons`
+- `"participatory budgeting" outcomes`
+- `"time banking" community`
+- `"cooperative housing" outcomes`
+- `"liquid democracy" delegative voting`
+
+Key authors: Elinor Ostrom, David Graeber
+
+#### E. Resilience Systems (5-7 papers)
+Search terms:
+- `"urban food systems" self-sufficiency`
+- `"community energy" cooperative`
+- `"circular economy" district`
+- `"sponge city" implementation`
+- `autarky resilience metrics`
+
+Key sources: Kate Raworth, Ellen MacArthur Foundation
+
+#### F. Psychology of Place (4-6 papers)
+Search terms:
+- `"attention restoration theory" nature`
+- `"biophilia hypothesis" urban`
+- `"prospect-refuge" public space`
+- `"place attachment" community`
+
+Key authors: Rachel & Stephen Kaplan, Roger Ulrich
+
+### Search Platforms:
+- Google Scholar
+- Semantic Scholar
+- arXiv
+- SSRN
+- ResearchGate
+- UN-Habitat reports
+- C40 Cities resources
+
+### Output Structure:
+
+Create `/briefings/research/papers/` folder with files:
+
+```
+papers/
+├── urban-001-moreno-15-minute-city.md
+├── urban-002-mueller-superblocks-health.md
+├── urban-003-gehl-cities-for-people.md
+├── edu-001-gray-sudbury-graduates.md
+├── edu-002-sobel-place-based.md
+├── rewild-001-miyawaki-forests.md
+├── gov-001-ostrom-governing-commons.md
+├── res-001-raworth-doughnut.md
+└── ...
+```
+
+### Paper Summary Template:
+
+```markdown
+# [Paper Title]
+
+**Citation:** [Author] ([Year]). [Title]. *[Journal]*, [Vol]([Issue]), [Pages]. [DOI/URL]
+**Domain:** [Urban Architecture | Education | Rewilding | Governance | Resilience | Psychology]
+**Access:** [Open Access / Paywalled] [Link]
+
+## Key Findings
+1. [Finding 1]
+2. [Finding 2]
+3. [Finding 3]
+
+## Relevant Quote
+> "[Quote with page number]"
+
+## Statistics/Data Points
+- [Statistic 1]
+- [Statistic 2]
+
+## Application to Wunderwelt
+[2-3 sentences on how this applies to the project]
+
+## Content Potential
+- [ ] Blog post: [suggested title]
+- [ ] Feature card concept
+- [ ] Calculator/tool idea
+- [ ] Infographic data
+
+## Tags
+#[tag1] #[tag2] #[tag3]
+```
+
+### Aggregated Outputs:
+
+#### `/briefings/research/PAPER_INDEX.md`
+```markdown
+# Paper Index
+
+## By Domain
+
+### Urban Architecture (X papers)
+| ID | Title | Author | Year | Key Finding |
+|----|-------|--------|------|-------------|
+| urban-001 | ... | ... | ... | ... |
+
+### Education (X papers)
+...
+
+## By Relevance
+1. [Most impactful paper]
+2. [Second most impactful]
+...
+```
+
+#### `/briefings/research/KEY_FINDINGS.md`
+```markdown
+# Top 10 Key Findings
+
+## 1. [Finding Title]
+**Source:** [Paper citation]
+**Finding:** [Description]
+**Application:** [How to use in content]
+
+## 2. ...
+```
+
+#### `/briefings/research/DATA_POINTS.md`
+```markdown
+# Statistics & Data for Content
+
+## Urban Architecture
+- 15-minute accessibility: [stat] (Source: [paper])
+- Superblock NO2 reduction: [stat] (Source: [paper])
+...
+
+## Education
+- Forest school outcomes: [stat]
+...
+
+## Infographic-Ready Data
+[Formatted for visual content]
+```
+
+---
+
+## TASK 4: Media Embed Research
+
+### Output: `/briefings/research/media-embeds.md`
 
 ```markdown
 # Media Embed Options
 
-## Video Embeds
+## Video
+
 ### YouTube (Privacy-Enhanced)
 ```html
-<iframe src="https://www.youtube-nocookie.com/embed/VIDEO_ID" ...></iframe>
+<iframe
+    src="https://www.youtube-nocookie.com/embed/VIDEO_ID"
+    title="Video title"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen
+    loading="lazy">
+</iframe>
 ```
+
+### Vimeo
+[Code and options]
 
 ## Social Embeds
-[Options with pros/cons]
 
-## Recommendations for Solarpunk Aesthetic
-[Which platforms align with project values]
+### Mastodon (Recommended for project values)
+[How to embed Mastodon posts]
+
+### Twitter/X
+[Privacy considerations]
+
+## Self-Hosted Video
+[HTML5 video best practices]
 ```
 
 ---
 
-## TASK 4: Run Validation Tasks
+## TASK 5: File Index & Documentation
 
-After other agents complete their work:
+### Create: `/briefings/FILE_INDEX.md`
 
-### HTML Validation:
-```bash
-# If npx available
-npx html-validate index.html blog.html contact.html
-```
-
-### CSS Check:
-- Look for unused variables
-- Check for browser compatibility issues
-
-### Accessibility Quick Check:
-- Verify all images have alt text
-- Check color contrast ratios
-- Ensure form labels are associated
-
-### Output:
-
-Create file: `/briefings/research/validation-report.md`
-
-Report any issues found for agents to fix.
-
----
-
-## TASK 5: Search for Inspiration
-
-Search for similar projects:
-
-- "Solarpunk website design examples"
-- "Glassmorphism dark mode portfolio"
-- "Static site newsletter integration best practices"
-
-Compile 3-5 reference links with notes on what could be borrowed.
-
-### Output:
-
-Add to `/briefings/research/inspiration.md`
-
----
-
-## Communication Protocol
-
-After completing research:
-
-1. Create all files in `/briefings/research/`
-2. Signal **Mistral** with summary of findings
-3. Mistral will relay actionable items to relevant agents
-
----
-
-## Deliverables Checklist
-
-- [ ] `/briefings/research/newsletter-services.md`
-- [ ] `/briefings/research/contact-backends.md`
-- [ ] `/briefings/research/media-embeds.md`
-- [ ] `/briefings/research/validation-report.md` (after implementation)
-- [ ] `/briefings/research/inspiration.md`
-
----
-
----
-
-## TASK 6: Academic Paper Research (PRIORITY)
-
-**Read full instructions:** `/briefings/research-directive.md`
-
-### Summary of research domains:
-1. **Urban Architecture** - 15-minute cities, superblocks, car-free design
-2. **Alternative Education** - democratic schools, forest schools, Reggio Emilia
-3. **Rewilding & Renaturalization** - urban ecology, Miyawaki forests, wildlife corridors
-4. **Social Governance** - commons theory, participatory budgeting, cohousing
-5. **Resilience Systems** - urban food, circular economy, community energy
-6. **Psychology of Place** - biophilia, attention restoration, soundscapes
-
-### Search platforms (prioritize open access):
-- arXiv.org, SSRN, CORE, Semantic Scholar, Google Scholar
-- UN-Habitat, C40 Cities, IPCC reports
-
-### Output structure:
-```
-/briefings/research/papers/
-├── urban-001-15-minute-city-moreno.md
-├── urban-002-superblocks-barcelona.md
-├── edu-001-forest-schools-outcomes.md
-├── rewild-001-miyawaki-method.md
-└── ...
-
-/briefings/research/
-├── PAPER_INDEX.md      # Master list
-├── KEY_FINDINGS.md     # Top 10 insights
-└── DATA_POINTS.md      # Stats for graphics
-```
-
-### Target: 30-50 paper summaries across all domains
-
-### Paper summary template:
 ```markdown
-# [Title]
-**Citation:** [Full citation]
-**Domain:** [Category]
-**Key Findings:** [3 bullets]
-**Quote:** "[Relevant quote]"
-**Application:** [How it applies to Wunderwelt]
-**Content Potential:** [Blog/Card/Tool/Visual]
+# Wunderwelt Project File Index
+
+**Last Updated:** [DATE]
+
+## Project Structure
+
+```
+Wunderwelt-Projekt-Kindergarten/
+├── index.html              [Gemini-A] Landing page
+├── blog.html               [Gemini-A] Blog listing
+├── contact.html            [Gemini-A] Contact page
+├── about.html              [Gemini-A] About page
+├── css/
+│   └── style.css           [Codex] All styles
+├── js/
+│   └── main.js             [Copilot] All JavaScript
+├── blog/
+│   ├── post-template.html  [Gemini-A] Template
+│   ├── urban-architecture/ [Gemini-B] 5 posts
+│   ├── education/          [Gemini-B] 5 posts
+│   ├── rewilding/          [Gemini-B] 5 posts
+│   ├── governance/         [Gemini-B] 5 posts
+│   └── resilience/         [Gemini-B] 5 posts
+├── assets/
+│   └── images/
+│       ├── hero.png        Existing
+│       ├── lab.png         Existing
+│       └── blog/           Blog heroes
+├── includes/               [Gemini-A] Reusable components
+└── briefings/              Agent instructions
+    ├── research/           [Qwen] Research outputs
+    └── ...
+```
+
+## File Status
+
+| File | Owner | Status | Dependencies |
+|------|-------|--------|--------------|
+| index.html | Gemini-A | Pending | - |
+| style.css | Codex | Pending | Gemini-A HTML |
+| main.js | Copilot | Pending | Codex CSS |
+| blog posts | Gemini-B | Pending | Qwen research |
+
+## Component Registry
+
+| Component | Files | CSS Classes | JS Functions |
+|-----------|-------|-------------|--------------|
+| Navigation | all pages | .main-nav | initNavigation() |
+| Newsletter | all pages | .newsletter-form | initNewsletterForms() |
+| Contact Form | contact.html | .contact-form | initContactForm() |
+| Blog Filter | blog.html | .filter-btn | initBlogFilters() |
 ```
 
 ---
 
-## Updated Deliverables Checklist
+## TASK 6: Progress Tracking
 
+### Create: `/briefings/PROGRESS.md`
+
+```markdown
+# Project Progress
+
+**Status:** IN PROGRESS
+**Last Updated:** [DATE]
+
+## Agent Completion Status
+
+| Agent | Primary Task | Status | Output |
+|-------|--------------|--------|--------|
+| Qwen | Research & Docs | In Progress | /briefings/research/ |
+| Gemini-A | Pages & Structure | Pending | HTML files |
+| Gemini-B | Blog Content | Waiting | /blog/**/*.html |
+| Codex | CSS Styling | Waiting | css/style.css |
+| Copilot | JavaScript | Waiting | js/main.js |
+
+## Feature Completion
+
+### Core Pages
+- [ ] index.html updated (nav, newsletter, footer)
+- [ ] blog.html created
+- [ ] contact.html created
+- [ ] about.html created
+
+### Blog System
+- [ ] Post template created
+- [ ] 25 blog posts written
+- [ ] Category pages working
+
+### Forms
+- [ ] Contact form functional
+- [ ] Newsletter signup functional
+- [ ] Form validation working
+
+### Styling
+- [ ] Navigation styled
+- [ ] Footer styled
+- [ ] Newsletter component styled
+- [ ] Blog cards styled
+- [ ] Post pages styled
+- [ ] Mobile responsive
+
+### JavaScript
+- [ ] Mobile nav toggle
+- [ ] Form validation
+- [ ] Newsletter handler
+- [ ] Blog filters
+- [ ] Animations
+
+## Research Progress
+
+- [ ] Newsletter service selected
+- [ ] Contact backend selected
+- [ ] 30+ papers summarized
+- [ ] Key findings compiled
+- [ ] Data points extracted
+
+## Blockers & Issues
+
+| Issue | Severity | Assigned | Resolution |
+|-------|----------|----------|------------|
+| - | - | - | - |
+
+## Next Steps
+
+1. [Next immediate action]
+2. [Following action]
+3. [...]
+```
+
+---
+
+## TASK 7: Validation & Testing
+
+After other agents complete:
+
+### HTML Validation
+```bash
+# If available
+npx html-validate *.html blog/**/*.html
+```
+
+### Manual Checks:
+- [ ] All images have alt text
+- [ ] All forms have labels
+- [ ] All links are valid
+- [ ] No broken image paths
+- [ ] Meta descriptions present
+- [ ] Open Graph tags present
+
+### Accessibility Audit:
+- [ ] Heading hierarchy correct (h1 > h2 > h3)
+- [ ] Color contrast sufficient
+- [ ] Keyboard navigation works
+- [ ] Focus states visible
+- [ ] ARIA labels where needed
+
+### Output: `/briefings/research/validation-report.md`
+
+---
+
+## TASK 8: Image Prompt Generation
+
+### Create: `/briefings/assets/image-prompts.md`
+
+Generate AI image prompts for each blog post hero:
+
+```markdown
+# Image Generation Prompts
+
+## Style Guide
+- Aesthetic: Solarpunk high-tech
+- Lighting: Golden hour, warm
+- Colors: Gold (#ffd700), green, glass
+- Mood: Optimistic, breathable
+- Aspect: 16:9 for heroes, 4:3 for cards
+
+## Blog Post Heroes
+
+### Urban Architecture Series
+
+#### 15-Minute City
+"Aerial view of compact urban neighborhood at golden hour, mixed-use buildings with ground-floor cafes and shops, tree-lined pedestrian streets filled with people walking and cycling, rooftop gardens visible, completely car-free, solarpunk architecture style, warm optimistic atmosphere, 16:9 aspect ratio"
+
+#### Superblocks Barcelona
+"Bird's eye view of Barcelona-style superblock interior courtyard, children's playground surrounded by greenery, residents gathering in shared spaces, balconies overflowing with plants, filtered golden sunlight, photorealistic rendering, 16:9"
+
+[Continue for all 25+ posts...]
+
+## Card Images
+
+### Newsletter Signup
+"Hands holding translucent tablet displaying glowing botanical diagrams, warm golden ambient light, blurred solarpunk cityscape in background, sense of connection and hope, 4:3"
+
+### Contact Page
+"Welcoming entrance to solarpunk community center, living plant frames around glass doors, warm light spilling out, people greeting each other, vertical gardens on walls, golden hour, 16:9"
+```
+
+---
+
+## DELIVERABLES CHECKLIST
+
+### Research Outputs
 - [ ] `/briefings/research/newsletter-services.md`
 - [ ] `/briefings/research/contact-backends.md`
 - [ ] `/briefings/research/media-embeds.md`
-- [ ] `/briefings/research/validation-report.md`
-- [ ] `/briefings/research/inspiration.md`
-- [ ] `/briefings/research/papers/` - 30-50 paper summaries
+- [ ] `/briefings/research/papers/` (30-50 papers)
 - [ ] `/briefings/research/PAPER_INDEX.md`
 - [ ] `/briefings/research/KEY_FINDINGS.md`
 - [ ] `/briefings/research/DATA_POINTS.md`
+- [ ] `/briefings/research/validation-report.md`
+
+### Documentation
+- [ ] `/briefings/FILE_INDEX.md`
+- [ ] `/briefings/PROGRESS.md`
+- [ ] `/briefings/assets/image-prompts.md`
+
+### Integration
+- [ ] Newsletter form action URLs documented
+- [ ] Contact form action URLs documented
+- [ ] Hidden field requirements listed
+- [ ] All research ready for Gemini-B
 
 ---
 
-**Status:** CAN START IMMEDIATELY (parallel track)
+## EXECUTION ORDER
+
+1. **Immediate:** Newsletter + Contact backend research
+2. **Parallel:** Academic paper mining (all domains)
+3. **Ongoing:** Update FILE_INDEX.md and PROGRESS.md
+4. **After agents:** Validation report
+5. **Final:** Completion documentation
+
+---
+
+**Status:** START IMMEDIATELY
