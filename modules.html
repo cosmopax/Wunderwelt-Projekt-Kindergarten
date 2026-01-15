@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Action Modules - Wunderwelt Protocol</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <style>
+        .modules-hero {
+            padding: 8rem 0 4rem;
+            text-align: center;
+        }
+        
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .module-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .module-card:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .module-card h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent-gold);
+        }
+
+        .module-tag {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            font-size: 0.8rem;
+            padding: 4px 8px;
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-muted);
+        }
+
+        .module-desc {
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .module-stats {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            color: var(--text-color);
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding-top: 1rem;
+        }
+
+        .stat {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .stat svg {
+            color: var(--accent-color);
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <nav class="main-nav">
+        <div class="nav-container container">
+            <a href="index.html" class="nav-logo">Wunderwelt</a>
+            <button class="nav-toggle" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="modules.html" class="active">Modules</a></li>
+                <li><a href="governance.html">Governance</a></li>
+                <li><a href="blog.html">Journal</a></li>
+                <li><a href="contact.html">Connect</a></li>
+                <li><a href="manifesto.html">Manifesto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        
+        <header class="modules-hero fade-in">
+            <h1>The <span class="highlight">Action Protocols</span></h1>
+            <p class="subtitle">Deployable interventions for the 150-person node.</p>
+        </header>
+
+        <section class="modules-grid fade-in delay-1">
+
+            <!-- Alpha -->
+            <article class="module-card">
+                <span class="module-tag">Module Alpha</span>
+                <h3>Bio-Thermal Facade</h3>
+                <p class="module-desc">Passive climate control via living architectural skins. Reduce indoor temperatures without electricity.</p>
+                <div class="module-stats">
+                    <div class="stat">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg>
+                        -5°C Cooling
+                    </div>
+                    <div class="stat">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                        2 Days Install
+                    </div>
+                </div>
+                <a href="modules/bio-thermal.html" class="cta-button">View Protocol</a>
+            </article>
+
+            <!-- Beta -->
+            <article class="module-card">
+                <span class="module-tag">Module Beta</span>
+                <h3>Fungal Digesters</h3>
+                <p class="module-desc">Distributed myco-cycling stations. Transform tough urban biomass into high-grade soil amendment.</p>
+                <div class="module-stats">
+                    <div class="stat">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                        60% Waste Redux
+                    </div>
+                    <div class="stat">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                        4 Weeks Cycle
+                    </div>
+                </div>
+                <a href="modules/fungal-digesters.html" class="cta-button">View Protocol</a>
+            </article>
+
+            <!-- Gamma -->
+            <article class="module-card">
+                <span class="module-tag">Module Gamma</span>
+                <h3>Optic Stewardship</h3>
+                <p class="module-desc">Analog security via social geometry. Retrofitting sightlines to maximize Defensible Space.</p>
+                <div class="module-stats">
+                    <div class="stat">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        + Social Trust
+                    </div>
+                    <div class="stat">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                        Immediate
+                    </div>
+                </div>
+                <a href="modules/optic-stewardship.html" class="cta-button">View Protocol</a>
+            </article>
+
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>Wunderwelt</h3>
+                <p>Reimagining urban existence through science, design, and collective action.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Explore</h4>
+                <ul>
+                    <li><a href="modules.html" class="active">Action Modules</a></li>
+                    <li><a href="governance.html">Governance</a></li>
+                    <li><a href="blog.html">Journal</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Connect</h4>
+                <ul>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="index.html">Home</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Wunderwelt Collective. Open source, open future.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
