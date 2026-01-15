@@ -4,7 +4,9 @@
 
 ### ✅ Content Review
 - [ ] All text proofread for typos
-- [ ] Links functional (internal anchors)
+- [ ] 6 Action Modules verified (Alpha-Zeta)
+- [ ] Liquid Democracy Simulator tested (Drag/Drop + Caps)
+- [ ] Links functional (internal anchors + dropdowns)
 - [ ] Images optimized (<500KB each)
 - [ ] Scientific sources verified
 - [ ] Contact info current

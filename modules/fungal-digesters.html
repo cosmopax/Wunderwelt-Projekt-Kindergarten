@@ -13,72 +13,30 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="../css/style.css">
-    
-    <style>
-        .module-hero {
-            padding: 8rem 0 4rem;
-            text-align: center;
-            background: radial-gradient(circle at top right, rgba(168, 85, 247, 0.1), transparent 40%);
-        }
-        .tech-specs {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 2rem;
-            margin: 2rem 0;
-        }
-        .spec-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-top: 1.5rem;
-        }
-        .spec-item strong {
-            display: block;
-            color: var(--accent-color);
-            margin-bottom: 0.5rem;
-            font-family: 'Outfit', sans-serif;
-        }
-        .step-list {
-            counter-reset: step;
-            list-style: none;
-            padding: 0;
-        }
-        .step-list li {
-            position: relative;
-            padding-left: 3rem;
-            margin-bottom: 1.5rem;
-        }
-        .step-list li::before {
-            counter-increment: step;
-            content: counter(step);
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 2rem;
-            height: 2rem;
-            background: var(--accent-color);
-            color: var(--bg-color);
-            border-radius: 50%;
-            text-align: center;
-            line-height: 2rem;
-            font-weight: bold;
-        }
-    </style>
 </head>
 
 <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <nav class="main-nav">
         <div class="nav-container container">
             <a href="../index.html" class="nav-logo">Wunderwelt</a>
-            <button class="nav-toggle" aria-label="Toggle menu">
+            <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-navigation">
                 <span></span><span></span><span></span>
             </button>
-            <ul class="nav-links">
+            <ul class="nav-links" id="primary-navigation">
                 <li><a href="../index.html">Home</a></li>
-                <li><a href="../modules.html" class="active">Modules</a></li>
-                <li><a href="../governance.html">Governance</a></li>
+                <li class="nav-item-dropdown">
+                    <a href="../index.html#action-modules">Modules</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="bio-thermal.html">🌿 Bio-Thermal Armor</a></li>
+                        <li><a href="fungal-digesters.html" class="active">🍄 Fungal Digesters</a></li>
+                        <li><a href="optic-stewardship.html">👁️ Optic Stewardship</a></li>
+                        <li><a href="resilience-rituals.html">🔥 Resilience Rituals</a></li>
+                        <li><a href="aquaponics.html">🐟 Aquaponics</a></li>
+                    </ul>
+                </li>
+                <li><a href="../liquid-democracy.html">Governance</a></li>
                 <li><a href="../blog.html">Journal</a></li>
                 <li><a href="../contact.html">Connect</a></li>
                 <li><a href="../manifesto.html">Manifesto</a></li>
@@ -86,7 +44,7 @@
         </div>
     </nav>
 
-    <main class="container">
+    <main class="container" id="main-content" tabindex="-1">
         
         <header class="module-hero fade-in">
             <span class="tag">Module Beta</span>
@@ -126,7 +84,7 @@
                         1kg Substrate = 400g Soil
                     </div>
                 </div>
-                <div class="warning-box" style="margin-top: 1rem; padding: 1rem; border: 1px solid #ef4444; background: rgba(239, 68, 68, 0.1); border-radius: 8px; font-size: 0.9rem; color: #fca5a5;">
+                <div class="warning-box">
                     <strong>⚠️ SAFETY WARNING:</strong> Mushrooms are hyper-accumulators. They will absorb heavy metals and toxins from inks, treated wood, or plastics in the substrate. <strong>Do not consume</strong> mushrooms grown on urban waste streams. Use fruit bodies for compost/soil building only.
                 </div>
             </div>
@@ -156,7 +114,7 @@
 
         </section>
 
-        <section class="cta-section center-text fade-in delay-3" style="margin-top: 4rem;">
+        <section class="cta-section center-text fade-in delay-3">
             <a href="../contact.html" class="cta-button">Deploy Module Beta</a>
         </section>
 

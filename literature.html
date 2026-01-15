@@ -12,35 +12,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="css/style.css">
-    <style>
-        .literature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 4rem;
-        }
-        .db-card {
-            background: rgba(20, 20, 25, 0.6);
-            border: 1px solid rgba(255, 215, 0, 0.2);
-            padding: 2rem;
-            border-radius: 16px;
-            text-align: center;
-            transition: transform 0.3s;
-        }
-        .db-card:hover {
-            transform: translateY(-5px);
-            background: rgba(20, 20, 25, 0.8);
-        }
-        .db-title {
-            color: var(--accent-gold);
-            font-family: var(--font-heading);
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-    </style>
 </head>
 
 <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <!-- NAV -->
     <nav class="main-nav">
@@ -51,6 +26,17 @@
             </button>
             <ul class="nav-links" id="primary-navigation">
                 <li><a href="index.html">Home</a></li>
+                <li class="nav-item-dropdown">
+                    <a href="index.html#action-modules">Modules</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="modules/bio-thermal.html">🌿 Bio-Thermal Armor</a></li>
+                        <li><a href="modules/fungal-digesters.html">🍄 Fungal Digesters</a></li>
+                        <li><a href="modules/optic-stewardship.html">👁️ Optic Stewardship</a></li>
+                        <li><a href="modules/resilience-rituals.html">🔥 Resilience Rituals</a></li>
+                        <li><a href="modules/aquaponics.html">🐟 Aquaponics</a></li>
+                    </ul>
+                </li>
+                <li><a href="liquid-democracy.html">Governance</a></li>
                 <li><a href="blog.html">Journal</a></li>
                 <li><a href="literature.html" class="active">Literature</a></li>
                 <li><a href="contact.html">Connect</a></li>
@@ -59,7 +45,7 @@
         </div>
     </nav>
 
-    <main class="container">
+    <main class="container" id="main-content" tabindex="-1">
         <!-- Hero -->
         <header class="blog-header fade-in">
             <h1>Knowledge <span class="highlight">Base</span></h1>
@@ -120,7 +106,7 @@
         </section>
 
         <!-- Databases -->
-        <section class="fade-in delay-2" style="margin-top: 4rem;">
+        <section class="fade-in delay-2 section-spacing-lg">
             <div class="section-header">
                 <span class="tag">Tools</span>
                 <h2>Research Databases</h2>
@@ -131,19 +117,19 @@
                 <div class="db-card">
                     <div class="db-title">OpenAlex</div>
                     <p>An open and comprehensive catalog of scholarly papers, authors, institutions, and more.</p>
-                    <a href="https://openalex.org/" target="_blank" class="cta-button" style="padding: 0.5rem 1.5rem; font-size: 0.8rem;">Explore</a>
+                    <a href="https://openalex.org/" target="_blank" class="cta-button cta-small">Explore</a>
                 </div>
 
                 <div class="db-card">
                     <div class="db-title">ArXiv</div>
                     <p>Open access archive for 2 million+ scholarly articles in physics, mathematics, CS, and more.</p>
-                    <a href="https://arxiv.org/" target="_blank" class="cta-button" style="padding: 0.5rem 1.5rem; font-size: 0.8rem;">Search</a>
+                    <a href="https://arxiv.org/" target="_blank" class="cta-button cta-small">Search</a>
                 </div>
 
                 <div class="db-card">
                     <div class="db-title">Sci-Hub</div>
                     <p>Access to research papers blocked by paywalls. Knowledge must be free.</p>
-                    <div class="action-box" style="border:none;">Use current mirror</div>
+                    <div class="action-box no-border">Use current mirror</div>
                 </div>
             </div>
         </section>

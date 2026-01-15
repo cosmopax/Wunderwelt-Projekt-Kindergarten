@@ -13,198 +13,18 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
-
-    <style>
-        .dashboard-container {
-            padding-top: 6rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .dashboard-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            margin-bottom: 2rem;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            padding-bottom: 1rem;
-        }
-
-        .node-status {
-            font-family: 'Outfit', sans-serif;
-            color: var(--accent-gold);
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .governance-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 2rem;
-        }
-
-        @media (max-width: 900px) {
-            .governance-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .topic-card {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .topic-card:hover {
-            border-color: var(--accent-color);
-            background: rgba(255,255,255,0.05);
-        }
-
-        .topic-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-
-        .topic-title {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.2rem;
-            color: var(--text-color);
-        }
-
-        .delegation-status {
-            font-size: 0.8rem;
-            padding: 4px 8px;
-            border-radius: 4px;
-            background: rgba(34, 197, 94, 0.2);
-            color: #4ade80;
-        }
-
-        .delegation-status.direct {
-            background: rgba(234, 179, 8, 0.2);
-            color: var(--accent-gold);
-        }
-
-        .flow-visualizer {
-            height: 60px;
-            background: rgba(0,0,0,0.2);
-            border-radius: 8px;
-            margin-bottom: 1rem;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            padding: 0 1rem;
-        }
-
-        .flow-line {
-            height: 2px;
-            background: var(--text-muted);
-            flex-grow: 1;
-            position: relative;
-        }
-
-        .flow-node {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            background: var(--bg-color);
-            border: 2px solid var(--accent-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.7rem;
-            font-weight: bold;
-            z-index: 2;
-        }
-
-        .vote-controls {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .btn-delegate {
-            flex: 1;
-            padding: 0.8rem;
-            background: transparent;
-            border: 1px solid var(--accent-color);
-            color: var(--accent-color);
-            border-radius: 6px;
-            cursor: pointer;
-            font-family: 'Inter', sans-serif;
-            transition: all 0.2s;
-        }
-
-        .btn-delegate:hover {
-            background: var(--accent-color);
-            color: var(--bg-color);
-        }
-
-        .sidebar-card {
-            background: rgba(255,255,255,0.03);
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .reputation-score {
-            text-align: center;
-            margin: 1.5rem 0;
-        }
-
-        .score-big {
-            font-size: 3rem;
-            font-family: 'Outfit', sans-serif;
-            font-weight: 700;
-            color: var(--accent-gold);
-            display: block;
-        }
-
-        .recent-activity li {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            margin-bottom: 0.8rem;
-            padding-bottom: 0.8rem;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-
-        /* Tabs */
-        .dashboard-tabs {
-            display: flex;
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-        .tab {
-            background: none;
-            border: none;
-            color: var(--text-muted);
-            font-size: 1.1rem;
-            cursor: pointer;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid transparent;
-        }
-        .tab.active {
-            color: var(--accent-color);
-            border-bottom-color: var(--accent-color);
-        }
-
-    </style>
 </head>
 
 <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <nav class="main-nav">
         <div class="nav-container container">
             <a href="index.html" class="nav-logo">Wunderwelt</a>
-            <button class="nav-toggle" aria-label="Toggle menu">
+            <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-navigation">
                 <span></span><span></span><span></span>
             </button>
-            <ul class="nav-links">
+            <ul class="nav-links" id="primary-navigation">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="modules.html">Modules</a></li> <!-- Placeholder for new menu structure -->
                 <li><a href="governance.html" class="active">Governance</a></li>
@@ -213,7 +33,7 @@
         </div>
     </nav>
 
-    <main class="dashboard-container fade-in">
+    <main class="dashboard-container fade-in" id="main-content" tabindex="-1">
         
         <header class="dashboard-header">
             <div>
@@ -242,19 +62,19 @@
                         <span class="topic-title">💧 Water: Rain Barrel Expansion</span>
                         <span class="delegation-status">Delegated to Maria K.</span>
                     </div>
-                    <p style="margin-bottom: 1rem; color: var(--text-muted);">Proposal to allocate 400 Credits for 3 new catchment tanks on Block B.</p>
+                    <p class="topic-summary">Proposal to allocate 400 Credits for 3 new catchment tanks on Block B.</p>
                     
                     <div class="flow-visualizer">
                         <div class="flow-node" title="You">You</div>
-                        <div class="flow-line" style="background: linear-gradient(90deg, var(--accent-color), transparent);"></div>
-                        <div class="flow-node" style="border-color: #4ade80;" title="Maria K.">MK</div>
-                        <div class="flow-line" style="opacity: 0.3;"></div>
-                        <div class="flow-node" style="border-color: var(--text-muted); opacity: 0.5;">?</div>
+                        <div class="flow-line accent"></div>
+                        <div class="flow-node green" title="Maria K.">MK</div>
+                        <div class="flow-line dim"></div>
+                        <div class="flow-node muted">?</div>
                     </div>
 
                     <div class="vote-controls">
                         <button class="btn-delegate">Revoke Delegation</button>
-                        <button class="btn-delegate" style="border-color: var(--text-muted); color: var(--text-muted);">Vote Directly</button>
+                        <button class="btn-delegate muted">Vote Directly</button>
                     </div>
                 </article>
 
@@ -264,16 +84,16 @@
                         <span class="topic-title">⚡ Energy: Winter Battery Protocol</span>
                         <span class="delegation-status direct">Direct Vote Required</span>
                     </div>
-                    <p style="margin-bottom: 1rem; color: var(--text-muted);">Consensus needed on discharge limits during the expected overcast week.</p>
+                    <p class="topic-summary">Consensus needed on discharge limits during the expected overcast week.</p>
                     
                     <div class="flow-visualizer">
                         <div class="flow-node" title="You">You</div>
-                        <div class="flow-line" style="border-top: 2px dashed var(--accent-gold); background: none;"></div>
-                        <div class="flow-node" style="border-color: var(--accent-gold);">Vote</div>
+                        <div class="flow-line dashed"></div>
+                        <div class="flow-node gold">Vote</div>
                     </div>
 
                     <div class="vote-controls">
-                        <button class="btn-delegate" style="background: var(--accent-gold); color: #000; border: none;">Cast Vote</button>
+                        <button class="btn-delegate primary">Cast Vote</button>
                         <button class="btn-delegate">Delegate This</button>
                     </div>
                 </article>
@@ -284,27 +104,27 @@
             <aside class="sidebar-column">
                 
                 <div class="sidebar-card">
-                    <h3 style="font-family: 'Outfit'; margin-bottom: 1rem;">My Reputation</h3>
+                    <h3 class="sidebar-title">My Reputation</h3>
                     <div class="reputation-score">
                         <span class="score-big">42</span>
                         <span class="node-status">Impact Credits</span>
                     </div>
-                    <p style="text-align: center; color: var(--text-muted); font-size: 0.9rem;">
+                    <p class="reputation-note">
                         Earned via: Gardening (20), Education (12), Repairs (10).
                     </p>
                 </div>
 
                 <div class="sidebar-card">
-                    <h3 style="font-family: 'Outfit'; margin-bottom: 1rem;">Recent Activity</h3>
-                    <ul class="recent-activity" style="list-style: none; padding: 0;">
+                    <h3 class="sidebar-title">Recent Activity</h3>
+                    <ul class="recent-activity">
                         <li>
-                            <strong style="color: var(--accent-color);">Maria K.</strong> cast your vote on <em>Water Filtration</em>.
+                            <strong>Maria K.</strong> cast your vote on <em>Water Filtration</em>.
                         </li>
                         <li>
-                            <strong style="color: var(--accent-color);">System</strong> awarded 5 Credits for "Compost Workshop".
+                            <strong>System</strong> awarded 5 Credits for "Compost Workshop".
                         </li>
                         <li>
-                            <strong style="color: var(--accent-color);">David L.</strong> delegated <em>Energy</em> to you.
+                            <strong>David L.</strong> delegated <em>Energy</em> to you.
                         </li>
                     </ul>
                 </div>

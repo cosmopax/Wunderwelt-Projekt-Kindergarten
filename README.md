@@ -13,14 +13,15 @@
 ### Core Interfaces
 *   `index.html`: The landing page and "Actionable Science" grid.
 *   `manifesto.html`: The philosophical core.
-*   `deployment.html`: **(New)** The 30-day "Zero-to-One" checklist.
-*   `modules.html`: **(New)** Directory of Action Protocols.
-*   `governance.html`: **(New)** Prototype for the Liquid Democracy dashboard.
+*   `literature.html`: Curated knowledge base and research databases.
+*   `liquid-democracy.html`: Interactive Liquid Democracy simulator.
 
-### 🛠️ Action Modules (The "Hardware")
-*   `modules/bio-thermal.html`: Passive cooling via vertical biomass.
-*   `modules/fungal-digesters.html`: Turning waste into soil.
-*   `modules/optic-stewardship.html`: Analog security via social geometry.
+### 🛠️ Action Modules (The "Hardware" & "Software")
+*   `modules/bio-thermal.html`: Passive cooling via vertical biomass (Alpha).
+*   `modules/fungal-digesters.html`: Turning waste into soil (Beta).
+*   `modules/optic-stewardship.html`: Analog security via social geometry (Gamma).
+*   `modules/resilience-rituals.html`: Building social capital through ritual (Epsilon).
+*   `modules/aquaponics.html`: Closed-loop food and water sovereignty (Zeta).
 
 ### 🧠 The "Software" (Theory)
 *   `liquid-democracy-whitepaper.md`: The governance protocol.

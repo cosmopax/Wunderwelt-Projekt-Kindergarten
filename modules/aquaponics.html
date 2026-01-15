@@ -5,35 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Module Zeta: Aquaponics Protocol | Wunderwelt</title>
     <link rel="stylesheet" href="../css/style.css">
-    <style>
-        .module-header { padding: 4rem 0; text-align: center; }
-        .module-content { max-width: 800px; margin: 0 auto; padding: 2rem; }
-        .diagram-box {
-            background: rgba(20,20,25,0.6);
-            border: 1px dashed var(--accent-green);
-            padding: 2rem;
-            margin: 2rem 0;
-            border-radius: 12px;
-            text-align: center;
-        }
-        .flow-arrow { color: var(--accent-gold); font-size: 1.5rem; display: block; margin: 0.5rem 0; }
-        .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-top: 1rem; }
-        .stat-item { text-align: center; }
-        .stat-val { display: block; font-size: 2rem; font-weight: 700; color: var(--accent-green); }
-    </style>
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <nav class="main-nav">
         <div class="nav-container container">
             <a href="../index.html" class="nav-logo">Wunderwelt</a>
-            <ul class="nav-links">
+            <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-navigation">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links" id="primary-navigation">
                 <li><a href="../index.html">Home</a></li>
+                <li class="nav-item-dropdown">
+                    <a href="../index.html#action-modules">Modules</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="bio-thermal.html">🌿 Bio-Thermal Armor</a></li>
+                        <li><a href="fungal-digesters.html">🍄 Fungal Digesters</a></li>
+                        <li><a href="optic-stewardship.html">👁️ Optic Stewardship</a></li>
+                        <li><a href="resilience-rituals.html">🔥 Resilience Rituals</a></li>
+                        <li><a href="aquaponics.html" class="active">🐟 Aquaponics</a></li>
+                    </ul>
+                </li>
+                <li><a href="../liquid-democracy.html">Governance</a></li>
                 <li><a href="../blog.html">Journal</a></li>
+                <li><a href="../contact.html">Connect</a></li>
+                <li><a href="../manifesto.html">Manifesto</a></li>
             </ul>
         </div>
     </nav>
 
-    <main class="container">
+    <main class="container" id="main-content" tabindex="-1">
         <header class="module-header fade-in">
             <span class="tag">Module Zeta</span>
             <h1>Aquaponics & Water Sovereignty</h1>

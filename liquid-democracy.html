@@ -5,170 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Module Delta: Liquid Democracy Simulator | Wunderwelt</title>
     <link rel="stylesheet" href="css/style.css">
-    <style>
-        .sim-container {
-            display: grid;
-            grid-template-columns: 1fr 350px;
-            gap: 2rem;
-            min-height: 80vh;
-            margin-top: 2rem;
-        }
-        
-        @media (max-width: 968px) {
-            .sim-container { grid-template-columns: 1fr; }
-            .sim-dashboard { order: -1; } /* Controls first on mobile */
-        }
-        
-        @media (max-width: 600px) {
-            .sim-playground { min-height: 400px; }
-            .node { width: 70px; height: 70px; }
-            .node-avatar { font-size: 1.2rem; }
-            .node-name { font-size: 0.65rem; display: none; } /* Hide names to save space */
-            .node:hover .node-name { display: block; position: absolute; bottom: -20px; background: #000; padding: 2px 5px; z-index: 20; width: max-content; }
-        }
-
-        /* Playground Area */
-        .sim-playground {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
-            position: relative;
-            overflow: hidden;
-            min-height: 600px;
-        }
-
-        /* Nodes */
-        .node {
-            position: absolute;
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            background: rgba(10, 10, 12, 0.8);
-            border: 2px solid var(--text-muted);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: 10;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-        }
-
-        .node:hover {
-            border-color: var(--accent-gold);
-            transform: scale(1.05);
-        }
-
-        .node.selected {
-            border-color: var(--accent-gold);
-            box-shadow: 0 0 30px rgba(255, 215, 0, 0.2);
-        }
-
-        .node-avatar {
-            font-size: 1.5rem;
-            margin-bottom: 0.25rem;
-        }
-
-        .node-name {
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--text-primary);
-        }
-
-        .node-power {
-            font-size: 0.7rem;
-            color: var(--accent-gold);
-            font-family: var(--font-heading);
-        }
-
-        /* Connections */
-        .connection-line {
-            position: absolute;
-            height: 2px;
-            background: linear-gradient(90deg, var(--accent-gold), transparent);
-            transform-origin: 0 50%;
-            pointer-events: none;
-            z-index: 5;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-        
-        .connection-line.active { opacity: 1; }
-
-        /* Controls / Dashboard */
-        .sim-dashboard {
-            background: var(--bg-card);
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .dash-header h2 {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem;
-            background: rgba(255,255,255,0.03);
-            border-radius: 12px;
-        }
-
-        .cap-warning {
-            color: #ff4444;
-            font-size: 0.8rem;
-            display: none;
-            margin-top: 0.5rem;
-            text-align: right;
-        }
-
-        .cap-warning.visible { display: block; }
-
-        .vote-token {
-            width: 40px;
-            height: 40px;
-            background: var(--accent-gold);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 900;
-            color: #000;
-            cursor: grab;
-            box-shadow: 0 0 15px var(--accent-gold);
-            margin: 0 auto;
-        }
-
-        .vote-token:active { cursor: grabbing; }
-
-        .tutorial-text {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            line-height: 1.6;
-            margin-top: auto;
-        }
-    </style>
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <nav class="main-nav">
         <div class="nav-container container">
             <a href="index.html" class="nav-logo">Wunderwelt</a>
-            <ul class="nav-links">
+            <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-navigation">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links" id="primary-navigation">
                 <li><a href="index.html">Home</a></li>
+                <li class="nav-item-dropdown">
+                    <a href="index.html#action-modules">Modules</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="modules/bio-thermal.html">🌿 Bio-Thermal Armor</a></li>
+                        <li><a href="modules/fungal-digesters.html">🍄 Fungal Digesters</a></li>
+                        <li><a href="modules/optic-stewardship.html">👁️ Optic Stewardship</a></li>
+                        <li><a href="modules/resilience-rituals.html">🔥 Resilience Rituals</a></li>
+                        <li><a href="modules/aquaponics.html">🐟 Aquaponics</a></li>
+                    </ul>
+                </li>
+                <li><a href="liquid-democracy.html" class="active">Governance</a></li>
                 <li><a href="blog.html">Journal</a></li>
+                <li><a href="contact.html">Connect</a></li>
+                <li><a href="manifesto.html">Manifesto</a></li>
             </ul>
         </div>
     </nav>
 
-    <main class="container">
-        <header class="module-header fade-in" style="padding: 4rem 0; text-align: center;">
+    <main class="container" id="main-content" tabindex="-1">
+        <header class="module-header fade-in">
             <span class="tag">Module Delta</span>
             <h1>Liquid Democracy Simulator</h1>
             <p class="lead-text">Visualize how power flows in a delegated trust network.</p>
@@ -179,7 +46,7 @@
             <!-- Interactive Playground -->
             <div class="sim-playground" id="playground">
                 <!-- Nodes generated by JS -->
-                <svg id="connection-layer" style="position: absolute; top:0; left:0; width:100%; height:100%; pointer-events: none;">
+                <svg id="connection-layer">
                     <!-- SVG lines -->
                 </svg>
             </div>
@@ -191,16 +58,16 @@
                     <p>Drag the token to a peer to delegate your power.</p>
                 </div>
 
-                <div class="token-container" style="text-align: center; padding: 2rem; border: 1px dashed var(--glass-border); border-radius: 16px;">
+                <div class="token-container">
                     <div class="vote-token" id="draggable-token" draggable="true">1</div>
-                    <p style="margin-top: 1rem; font-size: 0.8rem; color: var(--text-muted);">Vote Token</p>
+                    <p class="token-label">Vote Token</p>
                 </div>
 
                 <div class="stats-panel">
                     <h3>Network Health</h3>
                     <div class="stat-row">
                         <span>Gini Coefficient (Inequality)</span>
-                        <span id="gini-val" style="color: var(--accent-green);">0.05</span>
+                        <span id="gini-val" class="stat-value">0.05</span>
                     </div>
                     <div class="stat-row">
                         <span>Oligarchy Risk</span>

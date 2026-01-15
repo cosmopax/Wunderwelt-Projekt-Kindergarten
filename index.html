@@ -43,23 +43,6 @@
     <link rel="stylesheet" href="css/style.css">
 
     <!-- Accessibility: Skip link for screen readers -->
-    <style>
-        .skip-link {
-            position: absolute;
-            top: -40px;
-            left: 6px;
-            background: var(--accent-color);
-            color: #000;
-            padding: 8px;
-            text-decoration: none;
-            border-radius: 0 0 8px 8px;
-            z-index: 1000;
-        }
-
-        .skip-link:focus {
-            top: 0;
-        }
-    </style>
 </head>
 
 <body>
@@ -72,7 +55,7 @@
             <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-navigation">
                 <span></span><span></span><span></span>
             </button>
-            <ul class="nav-links">
+            <ul class="nav-links" id="primary-navigation">
                 <li><a href="index.html" class="active">Home</a></li>
                 <li class="nav-item-dropdown">
                     <a href="#action-modules">Modules</a>
@@ -200,40 +183,40 @@
             </div>
 
             <div class="principles-grid">
-                <article class="principle-card" style="border-color: var(--accent-gold);">
+                <article class="principle-card accent-gold">
                     <h3>🌿 Bio-Thermal Facade</h3>
                     <p>The metabolic shield. Reduce cooling loads by 40% using cable-guided biological armor.</p>
-                    <a href="modules/bio-thermal.html" class="cta-button" style="margin-top: 1rem; font-size: 0.8rem;">View Protocol &rarr;</a>
+                    <a href="modules/bio-thermal.html" class="cta-button cta-small">View Protocol &rarr;</a>
                 </article>
 
-                <article class="principle-card" style="border-color: var(--accent-gold);">
+                <article class="principle-card accent-gold">
                     <h3>🍄 Fungal Digesters</h3>
                     <p>Turning urban waste into soil amendment. Mycoremediation protocols for closed loops.</p>
-                    <a href="modules/fungal-digesters.html" class="cta-button" style="margin-top: 1rem; font-size: 0.8rem;">View Protocol &rarr;</a>
+                    <a href="modules/fungal-digesters.html" class="cta-button cta-small">View Protocol &rarr;</a>
                 </article>
 
-                <article class="principle-card" style="border-color: var(--accent-gold);">
+                <article class="principle-card accent-gold">
                     <h3>👁️ Optic Stewardship</h3>
                     <p>Analog security. Replacing cameras with "Defensible Space" geometry and social nodes.</p>
-                    <a href="modules/optic-stewardship.html" class="cta-button" style="margin-top: 1rem; font-size: 0.8rem;">View Protocol &rarr;</a>
+                    <a href="modules/optic-stewardship.html" class="cta-button cta-small">View Protocol &rarr;</a>
                 </article>
 
-                <article class="principle-card" style="border-color: var(--accent-green);">
+                <article class="principle-card accent-green">
                     <h3>🗳️ Liquid Governance</h3>
                     <p>Decision-making runs on delegated expertise. Visualize the flow of power.</p>
-                    <a href="liquid-democracy.html" class="cta-button" style="margin-top: 1rem; font-size: 0.8rem;">Launch Simulator &rarr;</a>
+                    <a href="liquid-democracy.html" class="cta-button cta-small">Launch Simulator &rarr;</a>
                 </article>
 
-                <article class="principle-card" style="border-color: var(--accent-gold);">
+                <article class="principle-card accent-gold">
                     <h3>🔥 Resilience Rituals</h3>
                     <p>Culture as infrastructure. Weekly skill shares and seasonal repair festivals.</p>
-                    <a href="modules/resilience-rituals.html" class="cta-button" style="margin-top: 1rem; font-size: 0.8rem;">View Protocol &rarr;</a>
+                    <a href="modules/resilience-rituals.html" class="cta-button cta-small">View Protocol &rarr;</a>
                 </article>
 
-                <article class="principle-card" style="border-color: var(--accent-green);">
+                <article class="principle-card accent-green">
                     <h3>🐟 Aquaponics Loop</h3>
                     <p>The protein engine. 90% less water, 3x faster growth. Zero fertilizer.</p>
-                    <a href="modules/aquaponics.html" class="cta-button" style="margin-top: 1rem; font-size: 0.8rem;">View Protocol &rarr;</a>
+                    <a href="modules/aquaponics.html" class="cta-button cta-small">View Protocol &rarr;</a>
                 </article>
             </div>
         </section>
@@ -418,19 +401,19 @@
         <!-- CONTACT & INVOLVEMENT -->
         <section class="contact-section fade-in delay-3">
             <div class="feature-card wide">
-                <div class="text-half" style="width: 100%; text-align: center;">
+                <div class="text-half full">
                     <div class="card-header center-text">
                         <span class="tag">Join the Network</span>
                         <h2 class="glow-text">Get Involved</h2>
                     </div>
                     <p>We are actively seeking researchers, architects, and urban agriculturists to expand the "Projekt: Kindergarten" node network. Whether you are looking to implement these protocols or contribute to the theory, reach out.</p>
                     
-                    <div class="contact-details" style="margin-top: 2rem;">
+                    <div class="contact-details">
                         <div class="contact-item">
                             <strong>Patrick Schimpl</strong><br>
-                            <a href="mailto:patrick.schimpl@univie.ac.at" style="color: var(--accent-color); text-decoration: none;">patrick.schimpl@univie.ac.at</a>
+                            <a href="mailto:patrick.schimpl@univie.ac.at" class="contact-link">patrick.schimpl@univie.ac.at</a>
                         </div>
-                        <div class="contact-item" style="margin-top: 1.5rem;">
+                        <div class="contact-item">
                             <strong>Headquarters</strong><br>
                             Philippovichgasse 4<br>
                             am Währingerpark<br>
@@ -530,7 +513,7 @@
                 <span class="tag">Scientific Foundation</span>
                 <h2>Research & Literature</h2>
                 <p class="section-desc">Evidence-based foundation for urban transformation</p>
-                <a href="literature.html" style="color: var(--accent-gold); font-size: 0.9rem; margin-top: 1rem; display: inline-block;">Browse Full Bibliography & Databases &rarr;</a>
+                <a href="literature.html" class="inline-link">Browse Full Bibliography & Databases &rarr;</a>
             </div>
 
             <div class="references-grid">

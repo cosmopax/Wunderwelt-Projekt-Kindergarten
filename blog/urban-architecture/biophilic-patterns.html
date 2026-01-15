@@ -13,54 +13,15 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="../../css/style.css">
-    
-    <style>
-        .article-hero {
-            padding: 8rem 0 4rem;
-            text-align: center;
-        }
-        .article-content {
-            max-width: 800px;
-            margin: 0 auto;
-            font-size: 1.1rem;
-            line-height: 1.7;
-        }
-        .article-content h2 {
-            font-family: 'Outfit', sans-serif;
-            margin-top: 3rem;
-            color: var(--text-color);
-        }
-        .quote-box {
-            border-left: 4px solid var(--accent-gold);
-            padding-left: 1.5rem;
-            margin: 2rem 0;
-            font-style: italic;
-            color: var(--text-muted);
-        }
-        .pattern-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-        .pattern-item {
-            background: rgba(255,255,255,0.03);
-            padding: 1.5rem;
-            border-radius: 8px;
-        }
-        .pattern-item h3 {
-            color: var(--accent-color);
-            margin-bottom: 0.5rem;
-        }
-    </style>
 </head>
 
 <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <nav class="main-nav">
         <div class="nav-container container">
             <a href="../../index.html" class="nav-logo">Wunderwelt</a>
-            <ul class="nav-links">
+            <ul class="nav-links" id="primary-navigation">
                 <li><a href="../../index.html">Home</a></li>
                 <li><a href="../../modules.html">Modules</a></li>
                 <li><a href="../../governance.html">Governance</a></li>
@@ -71,7 +32,7 @@
         </div>
     </nav>
 
-    <main class="container">
+    <main class="container" id="main-content" tabindex="-1">
         
         <header class="article-hero fade-in">
             <span class="tag">Urban Architecture</span>
@@ -118,7 +79,7 @@
 
             <h2>Actionable Architecture</h2>
             <p>
-                We don't need to tear down our concrete blocks. We need to <strong>armor them with life</strong>. By installing the <a href="../../modules/bio-thermal.html" style="color: var(--accent-color);">Bio-Thermal Facade</a>, we introduce fractal complexity (leaves) and dynamic movement (wind) to static structures.
+                We don't need to tear down our concrete blocks. We need to <strong>armor them with life</strong>. By installing the <a href="../../modules/bio-thermal.html">Bio-Thermal Facade</a>, we introduce fractal complexity (leaves) and dynamic movement (wind) to static structures.
             </p>
             <p>
                 The "Urban Paradise" is not a style. It is a biological necessity.
