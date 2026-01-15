@@ -29,8 +29,8 @@
     <meta property="twitter:image" content="assets/images/hero.png">
     
     <!-- Theme Color -->
-    <meta name="theme-color" content="#0d0d0ed3">
-    <meta name="msapplication-TileColor" content="#ffd700">
+    <meta name="theme-color" content="#050506">
+    <meta name="msapplication-TileColor" content="#FFD700">
     
     <!-- Google Fonts: Inter and Outfit -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -69,10 +69,10 @@
     <nav class="main-nav">
         <div class="nav-container container">
             <a href="index.html" class="nav-logo">Wunderwelt</a>
-            <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+            <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-navigation">
                 <span></span><span></span><span></span>
             </button>
-            <ul class="nav-links">
+            <ul class="nav-links" id="primary-navigation">
                 <li><a href="index.html" class="active">Home</a></li>
                 <li><a href="blog.html">Journal</a></li>
                 <li><a href="contact.html">Connect</a></li>
@@ -189,34 +189,36 @@
             </div>
 
             <div class="principles-grid">
-                <article class="principle-card">
-                    <h3>Microgrid Sovereignty</h3>
-                    <p>Decentralize energy into local clusters so critical loads remain powered during grid shocks.</p>
-                    <p><strong>Action:</strong> Install rooftop solar + shared battery banks sized for 72-hour autonomy.</p>
+                <article class="principle-card" style="border-color: var(--accent-gold);">
+                    <h3>🌿 Bio-Thermal Facade</h3>
+                    <p>The metabolic shield. Reduce cooling loads by 40% using cable-guided biological armor.</p>
+                    <a href="modules/bio-thermal.html" class="cta-button" style="margin-top: 1rem; font-size: 0.8rem;">View Protocol &rarr;</a>
                 </article>
 
-                <article class="principle-card">
-                    <h3>Closed-Loop Water</h3>
-                    <p>Recover and reuse water locally to buffer droughts and reduce municipal dependence.</p>
-                    <p><strong>Action:</strong> Pair rain capture with greywater recycling and on-site filtration nodes.</p>
+                <article class="principle-card" style="border-color: var(--accent-gold);">
+                    <h3>🍄 Fungal Digesters</h3>
+                    <p>Turning urban waste into soil amendment. Mycoremediation protocols for closed loops.</p>
+                    <a href="modules/fungal-digesters.html" class="cta-button" style="margin-top: 1rem; font-size: 0.8rem;">View Protocol &rarr;</a>
                 </article>
 
-                <article class="principle-card">
-                    <h3>Food Stack Density</h3>
-                    <p>Layer vertical farms, aquaponics, and community gardens to compress food production into walkable zones.</p>
-                    <p><strong>Action:</strong> Convert 10% of rooftops into hydroponic terraces and edible corridors.</p>
+                <article class="principle-card" style="border-color: var(--accent-gold);">
+                    <h3>👁️ Optic Stewardship</h3>
+                    <p>Analog security. Replacing cameras with "Defensible Space" geometry and social nodes.</p>
+                    <a href="modules/optic-stewardship.html" class="cta-button" style="margin-top: 1rem; font-size: 0.8rem;">View Protocol &rarr;</a>
                 </article>
 
                 <article class="principle-card">
                     <h3>Gift + Liquid Governance</h3>
                     <p>Decision-making runs on delegated expertise, while surplus flows through gifting protocols.</p>
-                    <p><strong>Action:</strong> Launch a local delegation registry and a communal resource ledger.</p>
+                    <p class="principle-detail">Use revocable delegations with 30-day review windows and transparent ledgers.</p>
+                    <p class="principle-action"><strong>Action:</strong> Launch a local delegation registry and a communal resource ledger.</p>
                 </article>
 
                 <article class="principle-card">
                     <h3>Resilience Rituals</h3>
                     <p>High-trust cultures survive crises better than infrastructure alone.</p>
-                    <p><strong>Action:</strong> Schedule weekly skill shares and seasonal repair festivals.</p>
+                    <p class="principle-detail">Rotate facilitation to distribute leadership and document learnings after each ritual.</p>
+                    <p class="principle-action"><strong>Action:</strong> Schedule weekly skill shares and seasonal repair festivals.</p>
                 </article>
             </div>
         </section>
@@ -269,7 +271,7 @@
             </div>
 
             <div class="map-container feature-card">
-                <div id="resource-map" class="interactive-map">
+                <div id="resource-map" class="interactive-map" role="region" aria-label="Resource map of a 150-peer node">
                     <svg id="node-svg" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid meet">
                         <!-- Map content generated by JS -->
                     </svg>
@@ -279,6 +281,11 @@
                     <div class="legend-item"><span class="dot food"></span> Food Node</div>
                     <div class="legend-item"><span class="dot social"></span> Social Hub</div>
                     <div class="legend-item"><span class="dot tech"></span> Fab Lab</div>
+                </div>
+                <div class="map-details" id="map-details" role="status" aria-live="polite">
+                    <span class="map-details-kicker">Node Detail</span>
+                    <h3 class="map-details-title" data-map-title>Awaiting selection</h3>
+                    <p data-map-body>Select a node to reveal its role in the 150-peer cluster.</p>
                 </div>
             </div>
         </section>
@@ -357,7 +364,7 @@
                     <div class="score-circle">
                         <span id="score-number">0</span>
                     </div>
-                    <p id="score-message">Enter data to see your status.</p>
+                    <p id="score-message" role="status" aria-live="polite">Enter data to see your status.</p>
                     <div class="score-breakdown">
                         <div class="breakdown-item">
                             <span class="breakdown-label">Energy</span>
@@ -565,41 +572,41 @@
 
             <div class="faq-container">
                 <div class="faq-item">
-                    <button class="faq-question">
+                    <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-1" id="faq-question-1">
                         <span>Is this realistic for dense urban areas?</span>
                         <span class="faq-icon">+</span>
                     </button>
-                    <div class="faq-answer">
+                    <div class="faq-answer" id="faq-answer-1" role="region" aria-labelledby="faq-question-1">
                         <p>Yes! Many principles scale better in density. Vertical farming and community energy grids are MORE efficient in high-density contexts.</p>
                     </div>
                 </div>
 
                 <div class="faq-item">
-                    <button class="faq-question">
+                    <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-2" id="faq-question-2">
                         <span>How much does this cost to implement?</span>
                         <span class="faq-icon">+</span>
                     </button>
-                    <div class="faq-answer">
+                    <div class="faq-answer" id="faq-answer-2" role="region" aria-labelledby="faq-question-2">
                         <p>Most pilots start under $10K. Community gardens: $2-5K. Tool libraries: $3-8K. These investments pay dividends through reduced consumption.</p>
                     </div>
                 </div>
 
                 <div class="faq-item">
-                    <button class="faq-question">
+                    <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-3" id="faq-question-3">
                         <span>What if local government isn't supportive?</span>
                         <span class="faq-icon">+</span>
                     </button>
-                    <div class="faq-answer">
+                    <div class="faq-answer" id="faq-answer-3" role="region" aria-labelledby="faq-question-3">
                         <p>Start with private property and voluntary cooperation. Tactical urbanism can demonstrate value without requiring permits.</p>
                     </div>
                 </div>
 
                 <div class="faq-item">
-                    <button class="faq-question">
+                    <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-4" id="faq-question-4">
                         <span>Can this work in extreme climates?</span>
                         <span class="faq-icon">+</span>
                     </button>
-                    <div class="faq-answer">
+                    <div class="faq-answer" id="faq-answer-4" role="region" aria-labelledby="faq-question-4">
                         <p>Absolutely. Passive house design works from -40°C to +40°C. The principles are universal; implementations are local.</p>
                     </div>
                 </div>

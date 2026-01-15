@@ -118,7 +118,7 @@ function initCalculator() {
 
 function updateSliderProgress(slider) {
     const percent = (slider.value - slider.min) / (slider.max - slider.min) * 100;
-    slider.style.background = `linear-gradient(to right, #FFD700 0%, #FFD700 ${percent}%, rgba(255, 255, 255, 0.1) ${percent}%, rgba(255, 255, 255, 0.1) 100%)`;
+    slider.style.background = `linear-gradient(to right, var(--accent-gold) 0%, var(--accent-gold) ${percent}%, rgba(255, 255, 255, 0.1) ${percent}%, rgba(255, 255, 255, 0.1) 100%)`;
 }
 
 function updateBreakdown(values, elements) {
@@ -169,10 +169,10 @@ function getInterpretation(score) {
 }
 
 function getScoreColor(score) {
-    if (score < 25) return "#9ca3af"; // Muted text
-    if (score < 50) return "#FFD700"; // Gold
-    if (score < 75) return "#4ade80"; // Neon Green
-    return "#22d3ee"; // Cyan for Autarkic
+    if (score < 25) return "var(--text-muted)";
+    if (score < 50) return "var(--accent-gold-soft)";
+    if (score < 75) return "var(--accent-gold)";
+    return "var(--accent-green)";
 }
 
 function getRecommendations(metrics) {
@@ -223,11 +223,12 @@ function initResourceMap() {
         ['energy1', 'food1'], ['energy2', 'food2']
     ];
 
+    const rootStyles = getComputedStyle(document.documentElement);
     const colors = {
-        energy: '#ffaa00', // Amber/Orange
-        food: '#4ade80',   // Neon Green
-        social: '#FFD700', // Gold
-        tech: '#22d3ee'    // Cyan
+        energy: rootStyles.getPropertyValue('--color-energy').trim() || '#FFD700',
+        food: rootStyles.getPropertyValue('--color-food').trim() || '#4ade80',
+        social: rootStyles.getPropertyValue('--color-social').trim() || '#FFD700',
+        tech: rootStyles.getPropertyValue('--color-tech').trim() || '#4ade80'
     };
 
     // Draw connections with animation
@@ -253,6 +254,9 @@ function initResourceMap() {
         const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
         g.setAttribute("class", "node");
         g.style.cursor = "pointer";
+        g.setAttribute("role", "button");
+        g.setAttribute("tabindex", "0");
+        g.setAttribute("aria-label", node.label);
 
         const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
         circle.setAttribute("cx", node.x);
@@ -274,22 +278,34 @@ function initResourceMap() {
         g.appendChild(circle);
         g.appendChild(text);
         
-        g.addEventListener('mouseenter', () => {
+        const highlightNode = () => {
             circle.setAttribute("opacity", "1");
             circle.setAttribute("r", node.r + 5);
             text.setAttribute("font-size", "14");
             text.setAttribute("fill", colors[node.type]);
-        });
+        };
         
-        g.addEventListener('mouseleave', () => {
+        const resetNode = () => {
             circle.setAttribute("opacity", "0.8");
             circle.setAttribute("r", node.r);
             text.setAttribute("font-size", "12");
             text.setAttribute("fill", "#fff");
-        });
+        };
+
+        g.addEventListener('mouseenter', highlightNode);
+        g.addEventListener('mouseleave', resetNode);
+        g.addEventListener('focus', highlightNode);
+        g.addEventListener('blur', resetNode);
 
         g.addEventListener('click', () => {
             showNodeInfo(node);
+        });
+
+        g.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                showNodeInfo(node);
+            }
         });
 
         svg.appendChild(g);
@@ -315,7 +331,15 @@ function showNodeInfo(node) {
         'social1': 'Community garden and gathering space for events and education.',
         'social2': 'Car-free play zone with art installations and performance space.'
     };
-    
+    const details = document.getElementById('map-details');
+    if (details) {
+        const title = details.querySelector('[data-map-title]');
+        const body = details.querySelector('[data-map-body]');
+        if (title) title.textContent = node.label;
+        if (body) body.textContent = info[node.id] || 'Collaborative resource node.';
+        return;
+    }
+
     alert(`${node.label}\n\n${info[node.id] || 'Collaborative resource node'}`);
 }
 
@@ -323,8 +347,21 @@ function showNodeInfo(node) {
 function initExpandableCards() {
     const cards = document.querySelectorAll('.principle-card');
     cards.forEach(card => {
-        card.addEventListener('click', () => {
+        card.setAttribute('tabindex', '0');
+        card.setAttribute('role', 'button');
+        card.setAttribute('aria-expanded', 'false');
+
+        const toggleCard = () => {
             card.classList.toggle('expanded');
+            card.setAttribute('aria-expanded', card.classList.contains('expanded'));
+        };
+
+        card.addEventListener('click', toggleCard);
+        card.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                toggleCard();
+            }
         });
     });
 }
@@ -367,17 +404,25 @@ function initFAQ() {
     
     faqItems.forEach(item => {
         const question = item.querySelector('.faq-question');
+        if (!question) return;
+
+        question.setAttribute('aria-expanded', item.classList.contains('active'));
         
         question.addEventListener('click', () => {
             // Close other open items
             faqItems.forEach(otherItem => {
                 if (otherItem !== item && otherItem.classList.contains('active')) {
                     otherItem.classList.remove('active');
+                    const otherQuestion = otherItem.querySelector('.faq-question');
+                    if (otherQuestion) {
+                        otherQuestion.setAttribute('aria-expanded', 'false');
+                    }
                 }
             });
             
             // Toggle current item
             item.classList.toggle('active');
+            question.setAttribute('aria-expanded', item.classList.contains('active'));
         });
     });
 }
