@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module Zeta: Aquaponics Protocol | Wunderwelt</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .module-header { padding: 4rem 0; text-align: center; }
+        .module-content { max-width: 800px; margin: 0 auto; padding: 2rem; }
+        .diagram-box {
+            background: rgba(20,20,25,0.6);
+            border: 1px dashed var(--accent-green);
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 12px;
+            text-align: center;
+        }
+        .flow-arrow { color: var(--accent-gold); font-size: 1.5rem; display: block; margin: 0.5rem 0; }
+        .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-top: 1rem; }
+        .stat-item { text-align: center; }
+        .stat-val { display: block; font-size: 2rem; font-weight: 700; color: var(--accent-green); }
+    </style>
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-container container">
+            <a href="../index.html" class="nav-logo">Wunderwelt</a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../blog.html">Journal</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <header class="module-header fade-in">
+            <span class="tag">Module Zeta</span>
+            <h1>Aquaponics & Water Sovereignty</h1>
+            <p class="lead-text">The protein-engine of the urban node.</p>
+        </header>
+
+        <section class="module-content fade-in delay-1">
+            <p>We decouple from industrial agriculture by bringing the ecosystem indoors. Aquaponics mimics natural waterways to produce protein (fish) and carbohydrates (plants) in a single loop.</p>
+
+            <div class="spec-box">
+                <h3>Operational Specs</h3>
+                <div class="stat-grid">
+                    <div class="stat-item"><span class="stat-val">-90%</span>Water Use</div>
+                    <div class="stat-item"><span class="stat-val">3x</span>Growth Rate</div>
+                    <div class="stat-item"><span class="stat-val">Zero</span>Fertilizer</div>
+                </div>
+            </div>
+
+            <h2>The Cycle</h2>
+            <div class="diagram-box">
+                <strong>Fish Tank (Tilapia/Catfish)</strong>
+                <p>Ammonia Waste Production</p>
+                <span class="flow-arrow">⬇</span>
+                <strong>Bio-Filter (Nitrifying Bacteria)</strong>
+                <p>Converts Ammonia → Nitrates</p>
+                <span class="flow-arrow">⬇</span>
+                <strong>Grow Beds (Leafy Greens)</strong>
+                <p>Plants absorb Nitrates (Cleaning Water)</p>
+                <span class="flow-arrow">⬇</span>
+                <strong>Clean Water Returns to Tank</strong>
+            </div>
+
+            <div class="action-box">
+                <strong>Autarky Win:</strong> A 200 sq ft system can provide 60% of the protein needs for a 4-person family year-round, independent of supply chains.
+            </div>
+
+            <h3>Water Capture</h3>
+            <p>This system is fed by <strong>Rainwater Harvesting</strong> (Module Theta). Roof catchment systems filter directly into the aquaponic top-off tanks, ensuring the node is water-neutral in temperate climates.</p>
+        </section>
+    </main>
+    <script src="../js/main.js"></script>
+</body>
+</html>

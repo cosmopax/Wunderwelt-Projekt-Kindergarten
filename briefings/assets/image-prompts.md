@@ -1,31 +1,26 @@
-# Image Generation Prompts
+# Visual Asset Briefing: Wunderwelt Project
+*Style Guide: Premium Solarpunk, Architectural Realism, Cinematic Lighting, 8k Resolution*
 
-## Style Guide
-- Solarpunk aesthetic
-- Golden hour lighting
-- Lush greenery + sleek glass
-- High-tech sustainable
-- Aspect: 16:9 for heroes, 4:3 for cards
+## 1. Hero Image (Home)
+**Prompt:**
+`Cinematic wide shot of a transformed urban street in Vienna or Berlin. Solarpunk aesthetic but grounded in reality. The street has no cars; instead, it is a lush green corridor with permeable paving and moss. Buildings are existing 19th-century architecture but retrofitted with "Bio-Thermal Facades" (cables with climbing hops and wisteria). Warm golden hour sunlight filtering through the leaves (dappled light). People of diverse ages sitting on "Social Benches" at intersections. A subtle futuristic "Fab Lab" glass cube is visible on a corner. High detail, photorealistic, architectural rendering style.`
 
-## Blog Heroes
+## 2. Module Alpha: Bio-Thermal Facade
+**Prompt:**
+`Architectural close-up of a "Bio-Thermal Facade". A concrete apartment wall covered in a structured, cable-guided vertical garden. The plants are Hops and Beans, lush and green. A cross-section view shows the air gap between the plants and the wall, illustrating the cooling effect. Rainwater harvesting pipes (copper or clear recycled plastic) are visible feeding the planters. Style: Technical illustration meets National Geographic photography.`
 
-### 15-Minute City
-Aerial view of a compact neighborhood at golden hour, mixed-use buildings with ground-floor shops, tree-lined pedestrian streets, people cycling and walking, rooftop gardens visible, no cars, solarpunk architecture, warm optimistic lighting, 16:9
+## 3. Module Beta: Fungal Digester
+**Prompt:**
+`A "Lignin-Fungal Digester" unit in a community courtyard. It consists of stacked, translucent HDPE buckets glowing slightly from internal mycelium activity. The buckets are arranged artistically, not like trash. Oyster mushrooms are fruiting from the sides. A child and an elder are harvesting them together. Soft, earthy tones, morning light. Focus on the texture of the mycelium and the clean design of the reuse system.`
 
-### Superblocks Barcelona
-Bird's eye view of Barcelona-style superblock, interior courtyard with playground and greenery, surrounding buildings with balconies full of plants, people gathering in shared space, filtered sunlight, photorealistic, 16:9
+## 4. Module Gamma: Social Bench / Optic Stewardship
+**Prompt:**
+`Night shot of a "Social Node" intersection. Warm, 2700K amber lighting illuminates a beautifully designed wooden bench where neighbors are talking. The lighting is focused on faces, not the ground. The background shows "permeable boundaries"—waist-high fences that allow sightlines from the homes to the street. The atmosphere is cozy, safe, and inviting. "Defensible Space" theory visualized.`
 
-### Forest School
-Children exploring a sunlit forest clearing, natural play structures made of logs, adult observing from distance, dappled golden light through trees, sense of wonder and discovery, soft focus background, 16:9
+## 5. Governance Dashboard (UI Concept)
+**Prompt:**
+`UI design of a mobile "Liquid Democracy" dashboard. Dark mode, glassmorphism style. The screen shows a "Flow Visualization" of votes moving from the user to a delegate named "Maria". Color palette: Deep charcoal background, glowing cyan and gold accents. Clean typography. Elements include a "Reputation Wallet" and "Active Proposals". Futuristic but usable.`
 
-### Miyawaki Forest
-Dense young forest in urban setting, diverse native plants at various heights, city buildings visible in background, morning mist, biodiversity visible (birds, butterflies), solarpunk hope aesthetic, 16:9
-
-### Ostrom Commons
-Diverse community members gathered around a shared garden plot, people of all ages tending vegetables, transparent greenhouse structure, collaborative atmosphere, warm afternoon light, 16:9
-
-### Urban Food Sovereignty
-Vertical farm integrated into residential building, multiple levels of growing systems visible through glass, people harvesting produce, solarpunk high-tech organic fusion, golden hour, 16:9
-
-### Liquid Democracy
-Circular meeting space under geodesic dome, diverse group using tablets/holographic displays to vote, bioluminescent plants, evening atmosphere with warm artificial lighting, futuristic but cozy, 16:9
+## 6. Biophilic Patterns (Blog)
+**Prompt:**
+`Abstract architectural concept art demonstrating "Fractal Facades". A building surface that mimics the self-similar geometry of a fern or a coastline. Complex, intricate textures that are pleasing to the eye. Natural materials: stone, wood, and living matter blending seamlessly. The image should evoke a sense of calm and fascination.`
