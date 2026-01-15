@@ -20,7 +20,7 @@
             <ul class="nav-links" id="primary-navigation">
                 <li><a href="index.html">Home</a></li>
                 <li class="nav-item-dropdown">
-                    <a href="index.html#action-modules">Modules</a>
+                    <a href="index.html#action-modules" aria-haspopup="true">Modules</a>
                     <ul class="dropdown-menu">
                         <li><a href="modules/bio-thermal.html">🌿 Bio-Thermal Armor</a></li>
                         <li><a href="modules/fungal-digesters.html">🍄 Fungal Digesters</a></li>
@@ -29,10 +29,10 @@
                         <li><a href="modules/aquaponics.html">🐟 Aquaponics</a></li>
                     </ul>
                 </li>
-                <li><a href="liquid-democracy.html">Governance</a></li>
+                <li><a href="governance.html">Governance</a></li>
                 <li><a href="blog.html">Journal</a></li>
                 <li><a href="contact.html">Connect</a></li>
-                <li><a href="manifesto.html" class="active">Manifesto</a></li>
+                <li><a href="manifesto.html">Manifesto</a></li>
             </ul>
         </div>
     </nav>
@@ -100,7 +100,7 @@
                 <p class="newsletter-subtitle">Monthly dispatches from the collective.</p>
                 <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing! (This is a demo)');">
                     <div class="form-row">
-                        <input type="email" name="email" placeholder="your@email.com" required>
+                        <input type="email" name="email" placeholder="your@email.com" required aria-label="Email address">
                         <button type="submit" class="btn-subscribe">Subscribe</button>
                     </div>
                 </form>

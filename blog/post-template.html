@@ -6,26 +6,37 @@
     <meta name="description" content="[POST_EXCERPT]">
     <meta property="og:title" content="[POST_TITLE] | Wunderwelt">
     <meta property="og:description" content="[POST_EXCERPT]">
-    <meta property="og:image" content="/assets/images/blog/[POST_IMAGE]">
+    <meta property="og:image" content="../assets/images/blog/[POST_IMAGE]">
     <meta property="og:type" content="article">
     <title>[POST_TITLE] | Wunderwelt</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
     <!-- NAV -->
     <nav class="main-nav">
         <div class="nav-container container">
-            <a href="/index.html" class="nav-logo">Wunderwelt</a>
+            <a href="../index.html" class="nav-logo">Wunderwelt</a>
             <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-navigation"><span></span><span></span><span></span></button>
             <ul class="nav-links" id="primary-navigation">
-                <li><a href="/index.html">Home</a></li>
-                <li><a href="/blog.html" class="active">Journal</a></li>
-                <li><a href="/contact.html">Connect</a></li>
-                <li><a href="/about.html">About</a></li>
+                <li><a href="../index.html">Home</a></li>
+                <li class="nav-item-dropdown">
+                    <a href="../index.html#action-modules" aria-haspopup="true">Modules</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../modules/bio-thermal.html">🌿 Bio-Thermal Armor</a></li>
+                        <li><a href="../modules/fungal-digesters.html">🍄 Fungal Digesters</a></li>
+                        <li><a href="../modules/optic-stewardship.html">👁️ Optic Stewardship</a></li>
+                        <li><a href="../modules/resilience-rituals.html">🔥 Resilience Rituals</a></li>
+                        <li><a href="../modules/aquaponics.html">🐟 Aquaponics</a></li>
+                    </ul>
+                </li>
+                <li><a href="../governance.html">Governance</a></li>
+                <li><a href="../blog.html" class="active">Journal</a></li>
+                <li><a href="../contact.html">Connect</a></li>
+                <li><a href="../manifesto.html">Manifesto</a></li>
             </ul>
         </div>
     </nav>
@@ -34,7 +45,7 @@
         <!-- Post Header -->
         <header class="post-header fade-in">
             <div class="post-meta">
-                <a href="/blog.html?filter=[CATEGORY_SLUG]" class="post-category">[CATEGORY]</a>
+                <a href="../blog.html?filter=[CATEGORY_SLUG]" class="post-category">[CATEGORY]</a>
                 <span class="post-date">[DATE]</span>
                 <span class="post-reading-time">[X] min read</span>
             </div>
@@ -44,7 +55,7 @@
 
         <!-- Hero Image -->
         <figure class="post-hero fade-in delay-1">
-            <img src="/assets/images/blog/[POST_IMAGE]" alt="[IMAGE_ALT]" class="post-hero-image">
+            <img src="../assets/images/blog/[POST_IMAGE]" alt="[IMAGE_ALT]" class="post-hero-image">
             <figcaption>[IMAGE_CAPTION]</figcaption>
         </figure>
 
@@ -68,7 +79,7 @@
             <p>[CONTENT]</p>
 
             <figure class="post-figure">
-                <img src="/assets/images/blog/[INLINE_IMAGE]" alt="[ALT]" loading="lazy">
+                <img src="../assets/images/blog/[INLINE_IMAGE]" alt="[ALT]" loading="lazy">
                 <figcaption>[CAPTION]</figcaption>
             </figure>
 
@@ -96,9 +107,9 @@
 
         <!-- Tags -->
         <div class="post-tags">
-            <a href="/blog.html?tag=[TAG_1]" class="post-tag">[TAG_1]</a>
-            <a href="/blog.html?tag=[TAG_2]" class="post-tag">[TAG_2]</a>
-            <a href="/blog.html?tag=[TAG_3]" class="post-tag">[TAG_3]</a>
+            <a href="../blog.html?filter=[TAG_1]" class="post-tag">[TAG_1]</a>
+            <a href="../blog.html?filter=[TAG_2]" class="post-tag">[TAG_2]</a>
+            <a href="../blog.html?filter=[TAG_3]" class="post-tag">[TAG_3]</a>
         </div>
 
         <!-- Share -->
@@ -115,7 +126,7 @@
             <h3>Enjoyed this article?</h3>
             <p>Get monthly research roundups in your inbox.</p>
             <form class="newsletter-form-compact" action="#" method="POST">
-                <input type="email" name="email" placeholder="your@email.com" required>
+                <input type="email" name="email" placeholder="your@email.com" required aria-label="Email address">
                 <button type="submit">Subscribe</button>
             </form>
         </aside>
@@ -150,20 +161,20 @@
             <div class="footer-links">
                 <h4>Explore</h4>
                 <ul>
-                    <li><a href="/blog.html">Journal</a></li>
-                    <li><a href="/blog/urban-architecture/">Urban Architecture</a></li>
-                    <li><a href="/blog/education/">Education</a></li>
-                    <li><a href="/blog/rewilding/">Rewilding</a></li>
-                    <li><a href="/blog/governance/">Governance</a></li>
-                    <li><a href="/blog/resilience/">Resilience</a></li>
+                    <li><a href="../blog.html">Journal</a></li>
+                    <li><a href="../blog.html?filter=urban-architecture">Urban Architecture</a></li>
+                    <li><a href="../blog.html?filter=education">Education</a></li>
+                    <li><a href="../blog.html?filter=rewilding">Rewilding</a></li>
+                    <li><a href="../blog.html?filter=governance">Governance</a></li>
+                    <li><a href="../blog.html?filter=resilience">Resilience</a></li>
                 </ul>
             </div>
             <div class="footer-links">
                 <h4>Connect</h4>
                 <ul>
-                    <li><a href="/contact.html">Contact</a></li>
-                    <li><a href="/about.html">About Us</a></li>
-                    <li><a href="#newsletter">Newsletter</a></li>
+                    <li><a href="../contact.html">Contact</a></li>
+                    <li><a href="../manifesto.html">About Us</a></li>
+                    <li><a href="../index.html#newsletter">Newsletter</a></li>
                 </ul>
             </div>
             <div class="footer-social">
@@ -183,6 +194,6 @@
         </div>
     </footer>
 
-    <script src="/js/main.js"></script>
+    <script src="../js/main.js"></script>
 </body>
 </html>

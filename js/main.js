@@ -224,6 +224,7 @@ function initResourceMap() {
     ];
 
     const rootStyles = getComputedStyle(document.documentElement);
+    const textPrimary = rootStyles.getPropertyValue('--text-primary').trim() || '#ffffff';
     const colors = {
         energy: rootStyles.getPropertyValue('--color-energy').trim() || '#FFD700',
         food: rootStyles.getPropertyValue('--color-food').trim() || '#4ade80',
@@ -270,7 +271,7 @@ function initResourceMap() {
         text.setAttribute("x", node.x);
         text.setAttribute("y", node.y + node.r + 20);
         text.setAttribute("text-anchor", "middle");
-        text.setAttribute("fill", "#fff");
+        text.setAttribute("fill", textPrimary);
         text.setAttribute("font-size", "12");
         text.setAttribute("font-weight", "600");
         text.textContent = node.label;
@@ -289,7 +290,7 @@ function initResourceMap() {
             circle.setAttribute("opacity", "0.8");
             circle.setAttribute("r", node.r);
             text.setAttribute("font-size", "12");
-            text.setAttribute("fill", "#fff");
+            text.setAttribute("fill", textPrimary);
         };
 
         g.addEventListener('mouseenter', highlightNode);
@@ -350,10 +351,18 @@ function initExpandableCards() {
         card.setAttribute('tabindex', '0');
         card.setAttribute('role', 'button');
         card.setAttribute('aria-expanded', 'false');
+        const detail = card.querySelector('.principle-detail');
+        if (detail) {
+            detail.setAttribute('aria-hidden', 'true');
+        }
 
         const toggleCard = () => {
             card.classList.toggle('expanded');
-            card.setAttribute('aria-expanded', card.classList.contains('expanded'));
+            const isExpanded = card.classList.contains('expanded');
+            card.setAttribute('aria-expanded', isExpanded);
+            if (detail) {
+                detail.setAttribute('aria-hidden', String(!isExpanded));
+            }
         };
 
         card.addEventListener('click', toggleCard);
